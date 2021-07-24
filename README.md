@@ -1,2 +1,2 @@
-# bandedao.github.io
+# bandaoworld.github.io
 hexo blog
