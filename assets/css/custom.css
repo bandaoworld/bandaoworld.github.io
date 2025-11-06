@@ -1,0 +1,14 @@
+/* Font Awesome 图标等宽 */
+.fa-solid,
+.fa-regular,
+.fa-brands {
+  font-size: 1em;
+  min-width: 1rem;
+  width: 1.2em;
+  text-align: center;
+}
+
+/* grid 标签内的 link 卡片 */
+.cell > .tag-plugin.link:only-child {
+  margin: 0;
+}

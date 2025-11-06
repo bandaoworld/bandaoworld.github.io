@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>腾飞杯百度网盘</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+</head>
+
+<body>
+    <img src="./source/background.jpg" alt="" class="bgImg">
+    <div class="card">
+        <a href="./tfb.html" target="_blank"
+            style="display: inline-block; font-size: 18px;color:#002a7c;">前往腾飞杯网页</a>
+        <br>
+        <a href="./xsb.html" target="_blank"
+            style="display: inline-block;font-size: 18px;color:#002a7c;">前往新生杯网页</a>
+    </div>
+    <div class="card">
+        <p>文件下载</p>
+        <a href="./source/TFB.csv" target="_blank">表格</a>
+        <br>
+        <a href="./json/tf_basketball.json" target="_blank">json</a>
+        <br>
+        <a href="./source/JsonToCsv.py" target="_blank" download="JsonToCsv.py">python json转CSV</a>
+    </div>
+    <div class="box"></div>
+
+    <script>
+        box = document.querySelector('.box')
+
+        // "type": "0腾飞杯1新生杯"
+        fetch("./json/tf_basketball.json")
+            .then(res => res.json())
+            .then(myJson => {
+                myJson.map((item) => {
+                    // ['name', 'link', 'pwd', 'year','type']
+                    if (item.year) {
+                        box.innerHTML += `
+                                <div class="card">
+                                    <p>${item.name}</p>
+                                    <a href="${item.link}"target="_blank">百度网盘</a>
+                                    <br>
+                                    <span>提取码：${item.pwd}</span>
+                                </div>
+                        `
+                    }
+
+                })
+            });
+    </script>
+</body>
+
+</html>
