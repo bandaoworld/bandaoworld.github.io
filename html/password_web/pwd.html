@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./css/element-plus.full.min.css"
+    />
+    <script src="./js/vue.global.prod.min.js"></script>
+    <script src="./js/element-plus.full.min.js"></script>
+    <script src="./pwd.js"></script>
+    <!-- <script>
+      let pwdInfo = [
+        {
+          id: 0,
+          name: " ",
+          username: " ",
+          password: " ",
+          ip: "",
+          port: "",
+        },
+      ];
+    </script> -->
+    <title>pwd</title>
+    <style>
+      * {
+        font-family: PingFang SC, Helvetic1, sans-serif;
+        padding: 0;
+        margin: 0;
+      }
+
+      .layout {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .bigBox {
+        margin: auto;
+        display: flex;
+        flex-flow: wrap;
+        justify-content: center;
+      }
+
+      .personBox {
+        height: 100px;
+        max-height: 200px;
+        max-width: 300px;
+
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: start;
+
+        padding: 15px 20px;
+        margin: 15px;
+        border-radius: 10px;
+        background-color: #4b6f98ef;
+        transition: background-color 0.2s;
+      }
+
+      .personBox:hover {
+        background-color: #2b4460;
+      }
+
+      h3 {
+        color: #eee;
+        margin-left: 1.25%;
+        padding-bottom: 3px;
+      }
+
+      span {
+        padding: 1px 0;
+        font-size: 14px;
+        color: #eee;
+        transition: font-size 0.5s;
+      }
+
+      span:hover {
+        font-size: 15px;
+      }
+
+      .el-button + .el-button {
+        margin-left: 0 !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="layout">
+        <div class="bigBox">
+          <div v-for="info in pwdInfo" class="personBox">
+            <h3>{{info.name}}</h3>
+            <el-button
+              v-if="info.username"
+              link
+              @click="handleClick(info, 'username')"
+              >Username:{{info.username}}</el-button
+            >
+            <el-button
+              v-if="info.password"
+              link
+              @click="handleClick(info, 'password')"
+              >Password:{{info.password}}</el-button
+            >
+            <el-button v-if="info.ip" link @click="handleClick(info, 'ip')"
+              >IP:{{info.ip}}</el-button
+            >
+            <el-button v-if="info.port" link @click="handleClick(info, 'port')"
+              >Port:{{info.port}}</el-button
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script type="module">
+    const { createApp, ref } = Vue;
+    const { ElNotification } = ElementPlus;
+    const handleClick = (info, name) => {
+      navigator.clipboard.writeText(info[name]);
+      // 调用 ElNotification
+      ElNotification({
+        title: "复制成功",
+        message: `复制成功：${info.name}的${
+          name.charAt(0).toUpperCase() + name.slice(1)
+        }`,
+        type: "success",
+        duration: 1200,
+      });
+    };
+    const App = {
+      data() {
+        return {
+          pwdInfo,
+        };
+      },
+      methods: {
+        handleClick,
+      },
+    };
+    const app = Vue.createApp(App);
+    app.use(ElementPlus);
+    app.mount("#app");
+  </script>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>unicom pwd</title>
+    <!-- <script src="./pwd.js"></script> -->
+    <script>
+        let pwdInfo = [
+            {
+                id: 1,
+                name: "name",
+                username: "username",
+                password: "password",
+                ip: "ip",
+                port: "port"
+            }
+        ];
+    </script>
+    <style>
+        * {
+            font-family: PingFang SC, Helvetic1, sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+
+        .layout {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bigBox {
+            margin: auto;
+            display: flex;
+            flex-flow: wrap;
+            justify-content: center;
+        }
+
+        .personBox {
+            height: 100px;
+            max-height: 200px;
+            max-width: 300px;
+
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: start;
+
+            padding: 15px 20px;
+            margin: 15px;
+            border-radius: 10px;
+            background-color: #4b6f98ef;
+            transition: background-color 0.2s;
+        }
+
+        .personBox:hover {
+            background-color: #2b4460;
+        }
+
+        h3 {
+            color: #eee;
+            padding-bottom: 3px;
+        }
+
+        a {
+            cursor: pointer;
+            padding: 1px 0;
+            font-size: 14px;
+            color: #eee;
+            transition: font-size 0.5s;
+        }
+
+        a:hover {
+            font-size: 15px;
+        }
+
+        /* 以下为toast */
+        /* toast内容样式 */
+        .toast {
+            position: fixed;
+            top: 0;
+            right: 0;
+
+            margin: 15px;
+            padding: 15px;
+
+            background-color: white;
+            border-radius: 5px;
+            border: 1px solid #eee;
+            /* 加入边框 */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            /* 加入阴影 */
+            z-index: 1000;
+            /* 确保toast在顶层 */
+        }
+
+        .content {
+            display: flex;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* 显示toast的动画 */
+        .show-toast {
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        /* 隐藏toast的动画 */
+        .hide-toast {
+            animation: slideOut 0.5s ease forwards;
+        }
+
+        /* 入场动画 */
+        @keyframes slideIn {
+            from {
+                transform: translateX(200px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* 出场动画 */
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateX(200px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="Toast"></div>
+    <div class="layout">
+        <div class="bigBox"></div>
+    </div>
+</body>
+<script>
+    // 点击事件处理
+    function handleClick(infoString, name) {
+        const info = JSON.parse(infoString);
+        navigator.clipboard.writeText(info[name]);
+        showToast(
+            `复制成功：${info.name}的${
+            // 首字母大写
+            name.charAt(0).toUpperCase() + name.slice(1)
+            }`,
+            1200
+        );
+    }
+    // Toast模块
+    let toastNumber = -1;
+    function showToast(content, duration = 1000) {
+        toastNumber++;
+        let toast = document.getElementById("Toast");
+        let toastItem = document.createElement("div");
+        toastItem.setAttribute("class", "toast");
+        toastItem.style.top = `${toastNumber * 65}px`;
+        toastItem.innerHTML = /*html*/ `
+      <div class="content">
+        <svg style="width:23px;color: rgb(10, 194, 58);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><path fill="currentColor" d="M512 64a448 448 0 1 1 0 896 448 448 0 0 1 0-896m-55.808 536.384-99.52-99.584a38.4 38.4 0 1 0-54.336 54.336l126.72 126.72a38.272 38.272 0 0 0 54.336 0l262.4-262.464a38.4 38.4 0 1 0-54.272-54.336z"></path></svg>
+        <span style="margin-left:5px">${content}</span>
+        </div>
+      `;
+        toast.appendChild(toastItem);
+        // 使用Promise来同步setTimeout
+        function delay(ms) {
+            return new Promise((resolve) => setTimeout(resolve, ms));
+        }
+        // 显示toast
+        // 播放开始动画
+        toastItem.classList.add("show-toast");
+        // 等待 进入动画+duration 时间后播放关闭动画
+        //   toastItem.style.top = `${toastNumber * 65}px`;
+        delay(duration + 500).then(() => {
+            toastItem.classList.add("hide-toast");
+            toastNumber--;
+        });
+        // 等待 进入动画+duration+出场动画 时间后播放移除节点
+        delay(duration + 500 + 500).then(() => {
+            if (toastItem) {
+                toastItem.remove();
+            }
+        });
+    }
+
+    bigBox = document.querySelector(".bigBox");
+    pwdInfo.forEach((info) => {
+        const showInfo = (category) => {
+            const tag = category.charAt(0).toUpperCase() + category.slice(1);
+            // info先从object变成string，然后把双引号替换掉，否则传递参数时会异常闭合
+            const infoString = JSON.stringify(info).replace(/"/g, "&quot;");
+            return info[category]
+                ? /*html*/ `<a class="btn" onclick="handleClick('${infoString}', '${category}')">
+                    ${tag}:${info[category]}
+                </a>`
+                : "";
+        };
+
+        bigBox.innerHTML += /*html*/ `
+        <div class="personBox">
+            <h3>${info.name}</h3>
+            ${showInfo("email")}
+            ${showInfo("username")}
+            ${showInfo("password")}
+            ${showInfo("ip")}
+            ${showInfo("port")}
+        </div>`;
+    });
+</script>
+
+</html>
